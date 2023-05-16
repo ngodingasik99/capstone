@@ -183,7 +183,7 @@
                     <span class="nav-text">Settings</span></a>
             </li> --}}
                     {{-- <li class=" logout"><a href="signin.html">
-                    <span><i class="ri-logout-circle-line"></i></span>      Anri Noorahim
+                    <span><i class="ri-logout-circle-line"></i></span>      Anri Noorahim Bandung
                     <span class="nav-text">Signout</span>
                 </a>
             </li>
