@@ -168,7 +168,7 @@
                 <a href="settings-profile.html">
                     <span><i class="ri-settings-3-line"></i></span>
                     <span class="nav-text">Settings</span></a>
-            </li> --}}
+            </li> --}}  
             <li class=" logout"><a href="signin.html">
                     <span><i class="ri-logout-circle-line"></i></span>
                     <span class="nav-text">Signout</span>
