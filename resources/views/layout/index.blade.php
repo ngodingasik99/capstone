@@ -180,7 +180,7 @@
 </div>
 
 
-    {{-- <div class="content-body">
+    <div class="content-body">
         <div class="container">
             <div class="row">
                 <div class="col-xxl-6">
@@ -873,7 +873,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 </div>
 
 <script src="{{asset('enftx-html.vercel.app/vendor/jquery/jquery.min.js')}}"></script>
