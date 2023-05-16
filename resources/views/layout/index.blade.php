@@ -179,7 +179,7 @@
 </div>
 
 
-    {{-- <div class="content-body">
+    {{-- <div class="content-body" amirudin>
         <div class="container">
             <div class="row">
                 <div class="col-xxl-6">
