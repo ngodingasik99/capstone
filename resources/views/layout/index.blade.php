@@ -154,7 +154,7 @@
                     <span><i class="ri-star-line"></i></span>
                     <span class="nav-text">Collection</span></a>
             </li>
-            {{-- <li class="">
+            {{-- <li class=""> kiki
                 <a href="wallet.html">
                     <span><i class="ri-wallet-line"></i></span>
                     <span class="nav-text">Wallet</span></a>
