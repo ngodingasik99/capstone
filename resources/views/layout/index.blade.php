@@ -155,6 +155,7 @@
                     <span class="nav-text">Collection</span></a>
             </li>
             {{-- kiki v.3 --}}
+            {{-- kiki v.4 --}}
             {{-- <li class=""> kiki
                 <a href="wallet.html">
                     <span><i class="ri-wallet-line"></i></span>
