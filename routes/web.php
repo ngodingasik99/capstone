@@ -19,3 +19,6 @@ Route::get('/', function () {
 // Route::get('/layout/index-2', function () {
 //     return view('layout/index-2');
 // });
+
+Route::get('/login', [AuthController::class, "login"])->name('login');
+Route::post('/login', [AuthController::class, "doLogin"])->name('do.login');
