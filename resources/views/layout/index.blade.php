@@ -169,7 +169,6 @@
             </li>
             {{-- kiki v.3 --}}
             {{-- kiki v.4 --}}
-            {{-- amirudin v.1 --}}
             {{-- <li class=""> kiki
                 <a href="wallet.html">
                     <span><i class="ri-wallet-line"></i></span>
