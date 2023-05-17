@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layout/index');
 });
-// Route::get('/layout/index-2', function () {
-//     return view('layout/index-2');
-// });
+Route::get('/kategori', function () {
+    return view('kategori/index');
+});
