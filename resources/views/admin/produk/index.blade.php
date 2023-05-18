@@ -21,9 +21,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>#</th>
-                                                    <th>Category name</th>
+                                                    <th>Product name</th>
                                                     <th>Image</th>
                                                     <th>Description</th>
+                                                    <th>Stok</th>
+                                                    <th>Price</th>
+                                                    <th>Category name</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -34,6 +37,9 @@
                                                     <td><img src="{{asset('enftx-html.vercel.app')}}/images/avatar/1.jpg" alt="" width="40"
                                                         class="me-2 rounded-circle"></td>
                                                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat aut fuga nostrum praesentium sed animi unde.</td>
+                                                    <td>100</td>
+                                                    <td>15.000</td>
+                                                    <td>nama kategori nya</td>
                                                     <td>
                                                         {{-- <span><i class="bi bi-pencil-square"></i></span> --}}
                                                         <a href="" data-bs-toggle="modal" data-bs-target="#update"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -72,22 +78,21 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form action="/kategori/" method="post" enctype="multipart/form-data">
+            <form action="/kategori" method="post" enctype="multipart/form-data">
                 @method('put')
                 @csrf
                 <div class="mb-3">
-                <label for="category_name" class="form-label">Category name</label>
-                <input type="text" class="form-control @error ('category_name') is-invalid @enderror" id="category_name" name="category_name" value="">
+                  <label for="product_name" class="form-label">product name</label>
+                  <input type="text" class="form-control @error ('product_name') is-invalid @enderror" id="product_name" name="product_name" value="">
                 </div>
-                @error('category_name')
+                @error('product_name')
                 <div class="invalid-feedback">
-                    category name tidak boleh kosong
+                    Product name tidak boleh kosong
                 </div>
                 @enderror
                 <div class="mb-3">
-                <label for="photo" class="form-label">Image</label>
-                <input type="file" class="form-control @error ('photo') is-invalid @enderror" id="photo" name="photo" value=""><br>
-                <img src="" width="90px" alt="">
+                  <label for="photo" class="form-label">Image</label>
+                  <input type="file" class="form-control @error ('photo') is-invalid @enderror" id="photo" name="photo" value="">
                 </div>
                 @error('photo')
                 <div class="invalid-feedback">
@@ -95,14 +100,45 @@
                 </div>
                 @enderror
                 <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control @error ('description') is-invalid @enderror" id="description" name="description" value="">
+                  <label for="description" class="form-label">Description</label>
+                  <input type="text" class="form-control @error ('description') is-invalid @enderror" id="description" name="description" value="">
                 </div>
                 @error('description')
                 <div class="invalid-feedback">
                     description tidak boleh kosong
                 </div>
                 @enderror
+                <div class="mb-3">
+                  <label for="stock" class="form-label">Stock</label>
+                  <input type="text" class="form-control @error ('stock') is-invalid @enderror" id="stock" name="stock" value="">
+                </div>
+                @error('stock')
+                <div class="invalid-feedback">
+                    Stock tidak boleh kosong
+                </div>
+                @enderror
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price</label>
+                  <input type="text" class="form-control @error ('price') is-invalid @enderror" id="price" name="price" value="">
+                </div>
+                @error('price')
+                <div class="invalid-feedback">
+                    Price tidak boleh kosong
+                </div>
+                @enderror
+                <div class="mb-3">
+                  <label for="category_id" class="form-label">category_name</label>
+                  <select class="form-select @error ('category_id') is-invalid @enderror" id="category_id" name="category_id">
+                    <option selected></option>
+                    {{-- @foreach ($categories as $item)
+                    <option value="{{ $item->id }}">{{$item->id}} - {{$item->name}}</option>
+                    @endforeach --}}
+                  </select>
+                  @error('category_id')
+                    <div class="invalid-feedback">
+                      Kategori tidak boleh kosong
+                    </div>
+                    @enderror
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save</button>
@@ -117,19 +153,19 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">Form category</h5>
+          <h5 class="modal-title" id="staticBackdropLabel">Form product</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form action="/kategori/store" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
-                  <label for="category_name" class="form-label">Category name</label>
-                  <input type="text" class="form-control @error ('category_name') is-invalid @enderror" id="category_name" name="category_name">
+                  <label for="product_name" class="form-label">product name</label>
+                  <input type="text" class="form-control @error ('product_name') is-invalid @enderror" id="product_name" name="product_name">
                 </div>
-                @error('category_name')
+                @error('product_name')
                 <div class="invalid-feedback">
-                    Category name tidak boleh kosong
+                    Product name tidak boleh kosong
                 </div>
                 @enderror
                 <div class="mb-3">
@@ -150,6 +186,37 @@
                     description tidak boleh kosong
                 </div>
                 @enderror
+                <div class="mb-3">
+                  <label for="stock" class="form-label">Stock</label>
+                  <input type="text" class="form-control @error ('stock') is-invalid @enderror" id="stock" name="stock">
+                </div>
+                @error('stock')
+                <div class="invalid-feedback">
+                    Stock tidak boleh kosong
+                </div>
+                @enderror
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price</label>
+                  <input type="text" class="form-control @error ('price') is-invalid @enderror" id="price" name="price">
+                </div>
+                @error('price')
+                <div class="invalid-feedback">
+                    Price tidak boleh kosong
+                </div>
+                @enderror
+                <div class="mb-3">
+                  <label for="category_id" class="form-label">category_name</label>
+                  <select class="form-select @error ('category_id') is-invalid @enderror" id="category_id" name="category_id">
+                    <option selected></option>
+                    {{-- @foreach ($categories as $item)
+                    <option value="{{ $item->id }}">{{$item->id}} - {{$item->name}}</option>
+                    @endforeach --}}
+                  </select>
+                  @error('category_id')
+                    <div class="invalid-feedback">
+                      Kategori tidak boleh kosong
+                    </div>
+                    @enderror
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save</button>

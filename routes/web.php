@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/kategori', function () {
     return view('admin/kategori/index');
 });
+Route::get('/produk', function () {
+    return view('admin/produk/index');
+});
