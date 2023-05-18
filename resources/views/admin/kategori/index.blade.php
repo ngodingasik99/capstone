@@ -24,7 +24,7 @@
                     <tbody>
                         <tr>
                             <td class="">1</td>
-                            <td>Amirudin</td>
+                            <td>Amirudin</td> 
                             <td><img src="{{asset('enftx-html.vercel.app')}}/images/avatar/1.jpg" alt="" width="40"
                                 class="me-2 rounded-circle"></td>
                             <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat aut fuga nostrum praesentium sed animi unde.</td>
