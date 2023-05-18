@@ -10,8 +10,8 @@
     <title>ENFTX - NFT Dashboard HTML Template</title>
     <meta name="description"
         content="ENFTX is the complete UX & UI dashboard for NFT. Here included bids, collection, wallet, and all user setting pages including profile, application, activity, payment method, api, sign in & sign up etc.">
-
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <link rel="stylesheet" href="{{asset('enftx-html.vercel.app/css/style.css')}}">
@@ -92,14 +92,14 @@
                         </div>
                         <div class="dropdown profile_log dropdown">
                             <div data-bs-toggle="dropdown" aria-haspopup="true" class="" aria-expanded="false">
-                                <div class="user icon-menu active"><span><img src="images/avatar/9.jpg" alt=""></span>
+                                <div class="user icon-menu active"><span><img src="{{asset('enftx-html.vercel.app')}}/images/avatar/9.jpg" alt=""></span>
                                 </div>
                             </div>
                             <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                 <div class="user-email">
                                     <div class="user">
                                         <span class="thumb">
-                                            <img src="images/profile/3.png" alt="">
+                                            <img src="{{asset('enftx-html.vercel.app')}}/images/profile/3.png" alt="">
                                         </span>
                                         <div class="user-info">
                                             <h5>Jannatul Maowa</h5>
@@ -134,7 +134,7 @@
     </div>
 </div>
     <div class="sidebar">
-    <div class="brand-logo"><a class="full-logo" href="index.html"><img src="images/logoi.png" alt="" width="30"></a></div>
+    <div class="brand-logo"><a class="full-logo" href="index.html"><img src="{{asset('enftx-html.vercel.app')}}/images/logoi.png" alt="" width="30"></a></div>
     <div class="menu">
         <ul>
             <li>
@@ -879,6 +879,7 @@
 </div> --}}
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="{{asset('enftx-html.vercel.app')}}/vendor/jquery/jquery.min.js"></script>
 <script src="{{asset('enftx-html.vercel.app')}}/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset('enftx-html.vercel.app')}}/vendor/chartjs/chart.bundle.min.js"></script>

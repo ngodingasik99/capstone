@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layout/index');
+    return view('admin/layout/index');
 });
 Route::get('/kategori', function () {
-    return view('kategori/index');
+    return view('admin/kategori/index');
 });
