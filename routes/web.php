@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SesiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +15,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layout/index');
-});
+
+// Route::get('/', function () {
+//     return view('layout/index');
+// });
 // Route::get('/layout/index-2', function () {
 //     return view('layout/index-2');
 // });
 
-Route::get('/login', [AuthController::class, "login"])->name('login');
-Route::post('/login', [AuthController::class, "doLogin"])->name('do.login');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', [SesiController::class, 'index']);
+    Route::post('/', [SesiController::class, 'login']);
+});
+Route::get('/home',function(){
+    return redirect('/admin');
+});
+
+
+Route::get('/admin',[AdminController::class, 'index']);
+Route::get('/logout',[SesiController::class,'logout']);

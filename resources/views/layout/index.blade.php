@@ -122,7 +122,7 @@
                                 <a class="dropdown-item" href="lock.html">
                                     <span><i class="ri-lock-line"></i></span>Lock
                                 </a>
-                                <a class="dropdown-item logout" href="signin.html">
+                                <a class="dropdown-item logout" href="logout">
                                     <i class="ri-logout-circle-line"></i>Logout
                                 </a>
                             </div>
@@ -173,7 +173,7 @@
                     <span><i class="ri-settings-3-line"></i></span>
                     <span class="nav-text">Settings</span></a>
             </li>
-            <li class=" logout"><a href="signin.html">
+            <li class=" logout"><a href="logout">
                     <span><i class="ri-logout-circle-line"></i></span>
                     <span class="nav-text">Signout</span>
                 </a>
