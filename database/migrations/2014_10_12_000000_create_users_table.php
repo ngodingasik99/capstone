@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('level');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role',['admin','kasir'])->default('admin');
             $table->rememberToken();
             $table->timestamps();
         });
