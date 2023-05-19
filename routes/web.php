@@ -23,7 +23,7 @@ Route::get('/kategori', function () {
 });
 Route::get('/produk', function () {
     return view('admin/produk/index');
-});
+}); 
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [SesiController::class, 'index']);
