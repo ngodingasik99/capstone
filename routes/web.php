@@ -21,9 +21,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('admin/layout/index');
 // });
 Route::get('/',function(){
-    return redirect('/admin');
+    return redirect('/login');
 });
 
+Route::middleware(['guest'])->group(function () {
 Route::get('/kategori', [CategoryController::class, 'index']);
 Route::post('/kategori/store', [CategoryController::class, 'store']);
 Route::put('/kategori/{id}', [CategoryController::class, 'action']);
@@ -34,10 +35,9 @@ Route::post('/produk/store', [ProductController::class, 'store']);
 Route::put('/produk/{id}', [ProductController::class, 'action']);
 Route::get('/produk/{id}', [ProductController::class, 'destroy']);
 
-Route::middleware(['guest'])->group(function () {
-    Route::get('/', [SesiController::class, 'index']);
-    Route::post('/', [SesiController::class, 'login']);
+Route::get('/', [SesiController::class, 'index']);
+Route::post('/', [SesiController::class, 'login']);
 });
 
-Route::get('/admin',[AdminController::class, 'index']);
-Route::get('/logout',[SesiController::class,'logout']);
+// Route::get('/admin',[AdminController::class, 'index']);
+// Route::get('/logout',[SesiController::class,'logout']);
