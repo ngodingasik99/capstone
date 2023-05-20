@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
@@ -17,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $data['category'] = category::all();
-        return view('category.index', $data);
+        return view('admin.kategori.index', $data);
     }
 
 
@@ -40,7 +40,7 @@ class CategoryController extends Controller
         }
 
         category::create($validasi);
-        return redirect('/category');
+        return redirect('/kategori');
             // ->with('success', 'Category created successfully.');
     }
 
@@ -63,7 +63,7 @@ class CategoryController extends Controller
             $data->photo = Storage::putFile('gambar', $request->file('photo'));
         }
         $data->save();
-        return redirect('/category');
+        return redirect('/kategori');
     }
 
     
@@ -80,6 +80,6 @@ class CategoryController extends Controller
             Storage::delete($data->photo);
         }
         category::destroy($id);
-        return redirect('/category');
+        return redirect('/kategori');
     }
 }

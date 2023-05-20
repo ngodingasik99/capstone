@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Storage;
@@ -16,8 +17,9 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $data['category'] = Category::all();
         $data['product'] = product::all();
-        return view('product.index', $data);
+        return view('admin.produk.index', $data);
     }
 
 
@@ -30,6 +32,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $validasi = $request->validate([
             'product_name' => 'required',
             'price' => 'required',
@@ -44,7 +47,7 @@ class ProductController extends Controller
         }
 
         product::create($validasi);
-        return redirect('/product');
+        return redirect('/produk');
         // ->with('success', 'Product created successfully.');
     }
 
@@ -70,7 +73,7 @@ class ProductController extends Controller
             $data->photo = Storage::putFile('gambar', $request->file('photo'));
         }
         $data->save();
-        return redirect('/product');
+        return redirect('/produk');
     }
 
 
@@ -87,6 +90,6 @@ class ProductController extends Controller
             Storage::delete($data->photo);
         }
         product::destroy($id);
-        return redirect('/product');
+        return redirect('/produk');
     }
 }
