@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'username' => 'admin',
             'email' => 'admin@gmail.com',
-            'level' => 1,
+            'role' => 'admin',
             'email_verified_at' => now(),
             'password' => Hash::make('admin123'), // password
             'photo' => Str::random(10),
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'name' => 'kasir',
             'username' => 'kasir',
             'email' => 'kasir@gmail.com',
-            'level' => 0,
+            'role' => 'kasir',
             'email_verified_at' => now(),
             'password' => Hash::make('kasir123'), // password
             'photo' => Str::random(10),
