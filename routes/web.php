@@ -18,15 +18,22 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('admin/layout/index');
-// });
-
 Route::middleware(['guest'])->group(function () {
-Route::get('/kategori', [CategoryController::class, 'index']);
-Route::post('/kategori/store', [CategoryController::class, 'store']);
-Route::put('/kategori/{id}', [CategoryController::class, 'action']);
-Route::get('/kategori/{id}', [CategoryController::class, 'destroy']);
+    Route::get('/', [SesiController::class, 'index'])->name('login');
+    Route::post('/', [SesiController::class, 'login']);
+});
+
+Route::get('/home', function(){
+    return redirect('/admin');
+});
+
+Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
+    Route::get('/admin',[AdminController::class, 'index'])->name('dashboard.admin');
+
+    Route::get('/kategori', [CategoryController::class, 'index']);
+    Route::post('/kategori/store', [CategoryController::class, 'store']);
+    Route::put('/kategori/{id}', [CategoryController::class, 'action']);
+    Route::get('/kategori/{id}', [CategoryController::class, 'destroy']);
 
     Route::get('/produk', [ProductController::class, 'index']);
     Route::post('/produk/store', [ProductController::class, 'store']);
@@ -34,9 +41,8 @@ Route::get('/kategori/{id}', [CategoryController::class, 'destroy']);
     Route::get('/produk/{id}', [ProductController::class, 'destroy']);
 });
 
-Route::get('/', [SesiController::class, 'index']);
-Route::post('/', [SesiController::class, 'login']);
+Route::group(['middleware' => ['userAkses:kasir', 'auth']], function () {
+    Route::get('/kasir',[KasirController::class, 'index'])->name('dashboard.kasir');
 });
 
-// Route::get('/admin',[AdminController::class, 'index']);
-// Route::get('/logout',[SesiController::class,'logout']);
+Route::get('/logout',[SesiController::class,'logout'])->name('logout');
