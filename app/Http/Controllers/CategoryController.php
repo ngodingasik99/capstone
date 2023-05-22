@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['category'] = category::all();
+        $data['category'] = category::paginate(5)->withQueryString();
         return view('admin.kategori.index', $data);
     }
 

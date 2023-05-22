@@ -22,9 +22,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($category as $item)
+                        @foreach ($category as $number => $item)
                         <tr>
-                            <td class="">{{$loop->iteration}}</td>
+                            <td class="">{{$number + $category->firstItem()}}</td>
                             <td>{{$item->category_name}}</td>
                             {{-- <td>{{$item->photo}}</td>  --}}
                             <td><img src="{{asset('storage/' . $item->photo)}}" width="50px" height="50px" alt=""
@@ -47,6 +47,9 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="d-flex justify-content-center">
+                {{$category->links()}}
             </div>
         </div>
     </div>
