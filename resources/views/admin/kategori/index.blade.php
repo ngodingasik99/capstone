@@ -46,10 +46,10 @@
                         </tr>
                         @endforeach
                     </tbody>
+                    <div class="">
+                        {{$category->links()}}
+                    </div>
                 </table>
-            </div>
-            <div class="d-flex justify-content-center">
-                {{$category->links()}}
             </div>
         </div>
     </div>

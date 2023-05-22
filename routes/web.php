@@ -39,6 +39,25 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     Route::post('/produk/store', [ProductController::class, 'store']);
     Route::put('/produk/{id}', [ProductController::class, 'action']);
     Route::get('/produk/{id}', [ProductController::class, 'destroy']);
+
+    //kelola akun
+
+
+
+
+
+    
+
+
+    //manajemen modal
+
+
+
+
+
+
+
+
 });
 
 Route::group(['middleware' => ['userAkses:kasir', 'auth']], function () {

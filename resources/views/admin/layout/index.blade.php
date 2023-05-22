@@ -33,7 +33,9 @@
                                     width="40"></a></div>
                         <div class="search">
                             <form action="#"><span><i class="ri-search-line"></i></span><input type="text"
-                                    placeholder="Search Here"></form>
+                                    placeholder="Search Here">
+                                    {{-- <button class="btn btn-outline-primary" type="submit">Search</button> --}}
+                            </form>
                         </div>
                     </div>
                     <div class="header-right">
