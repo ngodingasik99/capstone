@@ -16,10 +16,15 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['category'] = Category::all();
-        $data['product'] = product::all();
+        if ($request->has('search')) {
+            $data['category'] = category::where('category_name', 'LIKE', '%' . $request->search.'%')->paginate(4)->withQueryString();
+            $data['product'] = product::where('product_name', 'LIKE', '%' . $request->search . '%')->paginate(4)->withQueryString();
+        }else{
+            $data['category'] = Category::all();
+            $data['product'] = product::paginate(4)->withQueryString();
+        }
         return view('admin.produk.index', $data);
     }
 

@@ -4,7 +4,15 @@
         <div class="content-body">
             <div class="container">
                 <div class="card-header flex-row">
-                    <h4 class="card-title">Active Bids </h4>                    
+                    <h4 class="card-title">
+                        <div class="input-group">
+                            <div class="form-outline">
+                              <form action="/produk" method="GET">
+                                <input type="search" id="form1" name="search" class="btn btn-outline-primary" placeholder="Searching">
+                            </form>
+                            </div>
+                        </div>    
+                    </h4>                    
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         <i class="bi bi-plus-circle"></i>  Add product
@@ -25,9 +33,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($product as $item)
+                            @foreach ($product as $number => $item)
                             <tr>
-                                <td class="">{{$loop->iteration}}</td>
+                                <td class="">{{$number + $product->firstItem()}}</td>
                                 <td>{{$item->product_name}}</td>
                                 <td><img src="{{asset('storage/' . $item->photo)}}" alt="" width="50px" height="50px"
                                     class="me-2 rounded-circle"></td>
@@ -43,6 +51,9 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="my-3 d-flex justify-content-center">
+                        {{$product->onEachSide(0)->links()}}
+                    </div>
                 </div>
             </div>
         </div>

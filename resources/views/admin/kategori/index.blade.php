@@ -5,7 +5,15 @@
     <div class="content-body">
         <div class="container">
             <div class="card-header flex-row">
-                <h4 class="card-title">Active Bids </h4>                    
+                <h4 class="card-title">
+                    <div class="input-group">
+                        <div class="form-outline">
+                          <form action="/kategori" method="GET">
+                            <input type="search" id="form1" name="search" class="btn btn-outline-primary" placeholder="Searching"/>
+                        </form>
+                        </div>
+                    </div>    
+                </h4>                    
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-plus-circle"></i> Add Category</button>
             </div>
@@ -23,7 +31,7 @@
                     <tbody>
                         @foreach ($category as $number => $item)
                         <tr>
-                            <td class="">{{$number + $category->firstItem()}}</td>
+                            <td>{{$number + $category->firstItem()}}</td>
                             <td>{{$item->category_name}}</td>
                             <td><img src="{{asset('storage/' . $item->photo)}}" width="50px" height="50px" alt=""
                                 class="me-2 rounded-circle"></td>
@@ -35,10 +43,10 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    <div class="">
-                        {{$category->links()}}
-                    </div>
                 </table>
+                <div class="my-3 d-flex justify-content-center">
+                    {{$category->onEachSide(0)->links()}}
+                </div>
             </div>
         </div>
     </div>
