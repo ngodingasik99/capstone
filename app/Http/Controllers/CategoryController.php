@@ -14,9 +14,13 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['category'] = category::paginate(5)->withQueryString();
+        if ($request->has('search')) {
+            $data['category'] = category::where('category_name', 'LIKE', '%' . $request->search.'%')->paginate(4)->withQueryString();
+        }else{
+            $data['category'] = category::paginate(4)->withQueryString();
+        }
         return view('admin.kategori.index', $data);
     }
 
