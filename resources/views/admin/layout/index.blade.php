@@ -180,6 +180,8 @@
     </div>
 </div>
 @yield('content')
+@include('sweetalert::alert')
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -189,5 +191,66 @@
 <script src="{{asset('enftx-html.vercel.app')}}/js/plugins/chartjs-line-init.js"></script>
 <script src="{{asset('enftx-html.vercel.app')}}/js/plugins/chartjs-donut.js"></script>
 <script src="{{asset('enftx-html.vercel.app')}}/js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+    
+        function hapuskategori(id){
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Confirm Delete!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                    )
+                    window.location.href = "/kategori/" + id
+                }
+                })
+
+
+        }
+</script>
+
+<script type="text/javascript">
+    
+    function hapusproduk(id){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Confirm Delete!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+                window.location.href = "/produk/" + id
+            }
+            })
+
+
+    }
+</script>
+
+<script>
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
 </body>
 </html>
