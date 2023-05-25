@@ -8,7 +8,7 @@
                         <div class="input-group">
                             <div class="form-outline">
                               <form action="/produk" method="GET">
-                                <input type="search" id="form1" name="search" class="btn btn-outline-primary" placeholder="Searching">
+                                <input type="search" id="form1" name="search" class="form-control" placeholder="Searching">
                             </form>
                             </div>
                         </div>    

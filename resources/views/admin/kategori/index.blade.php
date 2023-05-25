@@ -7,16 +7,15 @@
                 <h4 class="card-title">
                     <div class="input-group">
                         <div class="form-outline">
-                          <form action="/kategori" method="GET">
-                            <input type="search" id="form1" name="search" class="btn btn-outline-primary" placeholder="Searching"/>
-                        </form>
+                            <form action="/kategori" method="GET">
+                                <input type="search" id="form1" name="search" class="form-control" placeholder="Searching">
+                          </form>
                         </div>
                     </div>    
-                </h4>                    
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Add category
-                </button>
+                </h4>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Add category
+                    </button>
             </div>
             <div class="table-responsive">
                 <table class="table">
