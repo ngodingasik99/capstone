@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AkunkasirController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -27,6 +28,8 @@ Route::get('/home', function(){
     return redirect('/admin');
 });
 
+Route::get('/akunkasir', [AkunkasirController::class, 'index']);
+
 Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     Route::get('/admin',[AdminController::class, 'index'])->name('dashboard.admin');
 
@@ -46,7 +49,7 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
 
 
 
-    
+
 
 
     //manajemen modal
