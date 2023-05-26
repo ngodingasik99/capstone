@@ -9,7 +9,7 @@ class SesiController extends Controller
 {
     function index()
     {
-        return view('login');
+        return view('signin');
     }
 
     function login(Request $request)
@@ -17,9 +17,6 @@ class SesiController extends Controller
         $request->validate([
             'email' => 'required',
             'password' => 'required'
-        ],[
-            'email.required' => 'email wajib diisi',
-            'password.required' => 'password wajib diisi',
         ]);
 
 
@@ -35,7 +32,8 @@ class SesiController extends Controller
                 return redirect('/kasir');
             }
         }else{
-            return redirect('')->withErrors('email dan password yang dimasukkan tidak sesuai')->withInput();
+            return redirect('/')->with([
+                'incorrect' => 'Incorrect email or password!']);
         }
     }
 

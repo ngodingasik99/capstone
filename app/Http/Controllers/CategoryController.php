@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
@@ -36,7 +37,7 @@ class CategoryController extends Controller
         $validasi = $request->validate([
             'category_name' => 'required',
             'description' => 'required',
-            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10'
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         if ($request->file('photo')) {
@@ -44,8 +45,8 @@ class CategoryController extends Controller
         }
 
         category::create($validasi);
+        Alert::success('Success', 'Category has been added');
         return redirect('/kategori');
-            // ->with('success', 'Category created successfully.');
     }
 
 
@@ -53,8 +54,8 @@ class CategoryController extends Controller
     public function action(Request $request, $id)
     {
         $request->validate([
-            'category_name' => 'required',
-            'description' => 'required',
+            'category_name' => 'required|max:50',
+            'description' => 'required|max:50',
             'photo' => [File::types(['jpg', 'jpeg', 'png', 'gif'])->max(2 * 1024)],
 
         ]);
@@ -66,6 +67,7 @@ class CategoryController extends Controller
             Storage::delete($data->photo);
             $data->photo = Storage::putFile('gambar', $request->file('photo'));
         }
+        Alert::success('Success', 'Category has been edited');
         $data->save();
         return redirect('/kategori');
     }
