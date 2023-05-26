@@ -85,9 +85,9 @@
     <div class="menu">
         <ul>
             <li>
-                <a href="/transaksi">
+                <a href="/transaction">
                     <span><i class="ri-layout-grid-fill"></i></span>
-                    <span class="nav-text">Dashboard</span>
+                    <span class="nav-text">Transaction</span>
                 </a>
             </li>
             <li class="">
@@ -98,7 +98,76 @@
         </ul>
     </div>
 </div>
-@yield('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card-body">
+                <a href="#" class="btn btn-primary">
+                    <img src="{{asset('enftx-html.vercel.app')}}/images/avatar/9.jpg" class="card-img-top" alt="adskch">
+                    <p class="card-text">1000</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-body">
+                <a href="#" class="btn btn-primary">
+                    <img src="{{asset('enftx-html.vercel.app')}}/images/avatar/9.jpg" class="card-img-top" alt="adskch">
+                    <p class="card-text">1000</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-body">
+                <a href="#" class="btn btn-primary">
+                    <img src="{{asset('enftx-html.vercel.app')}}/images/avatar/9.jpg" class="card-img-top" alt="adskch">
+                    <p class="card-text">1000</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-body">
+                <a href="#" class="btn btn-primary">
+                    <img src="{{asset('enftx-html.vercel.app')}}/images/avatar/9.jpg" class="card-img-top" alt="adskch">
+                    <p class="card-text">1000</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-body">
+                <a href="#" class="btn btn-primary">
+                    <img src="{{asset('enftx-html.vercel.app')}}/images/avatar/9.jpg" class="card-img-top" alt="adskch">
+                    <p class="card-text">1000</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-body">
+                <a href="#" class="btn btn-primary">
+                    <img src="{{asset('enftx-html.vercel.app')}}/images/avatar/9.jpg" class="card-img-top" alt="adskch">
+                    <p class="card-text">1000</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-body">
+                <a href="#" class="btn btn-primary">
+                    <img src="{{asset('enftx-html.vercel.app')}}/images/avatar/9.jpg" class="card-img-top" alt="adskch">
+                    <p class="card-text">1000</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card-body">
+                <a href="#" class="btn btn-primary">
+                    <img src="{{asset('enftx-html.vercel.app')}}/images/avatar/9.jpg" class="card-img-top" alt="adskch">
+                    <p class="card-text">1000</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- <div class="">ksdgc</div> --}}
+{{-- @yield('content') --}}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
