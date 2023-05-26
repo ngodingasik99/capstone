@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -22,4 +23,12 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    //test chart
+    protected function chart()
+    {
+        $month = date('m');
+        // return DB::delete("DELETE FROM carts WHERE id='$data'");
+        return DB::select("SELECT COUNT(created_at) AS total, created_at FROM `products` GROUP BY `created_at` HAVING MONTH(created_at) = $month");
+    }
+    //test chart
 }

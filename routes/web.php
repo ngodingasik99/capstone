@@ -65,3 +65,5 @@ Route::group(['middleware' => ['userAkses:kasir', 'auth']], function () {
 });
 
 Route::get('/logout',[SesiController::class,'logout'])->name('logout');
+
+Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('dashboard');

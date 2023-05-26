@@ -85,7 +85,7 @@
     <div class="menu">
         <ul>
             <li>
-                <a href="/layout/index">
+                <a href="/dashboard">
                     <span><i class="ri-layout-grid-fill"></i></span>
                     <span class="nav-text">Dashboard</span>
                 </a>
