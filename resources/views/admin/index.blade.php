@@ -4,6 +4,7 @@
 
 <div id="main-wrapper">
 <center>
+    <div class="container">
     <div class="row">
         <div class="col-xl-3 col-sm-6">
             <div class="stat-widget d-flex align-items-center">
@@ -42,6 +43,7 @@
             </div>
         </div>
     </div>
+
 
 
 <div class="col-xxl-6 col-xl-8 col-lg-6">
@@ -84,6 +86,7 @@
 
 {{ $monthlyTransactionChart->script() }}
 
+</div>
 </center>
 </div>
 @endsection

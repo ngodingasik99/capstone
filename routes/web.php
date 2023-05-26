@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\AdminController;
@@ -28,8 +29,6 @@ Route::get('/home', function(){
     return redirect('/admin');
 });
 
-Route::get('/akunkasir', [AkunkasirController::class, 'index']);
-
 Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     Route::get('/admin',[AdminController::class, 'index'])->name('dashboard.admin');
 
@@ -44,14 +43,11 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     Route::get('/produk/{id}', [ProductController::class, 'destroy']);
 
     //kelola akun
-
-
-
-
-
-
-
-
+    Route::get('/akun', [AccountController::class, 'index']);
+    Route::post('/akun/store', [AccountController::class, 'store']);
+    Route::put('/akun/{id}', [AccountController::class, 'update']);
+    Route::get('/akun/{id}', [AccountController::class, 'destroy']);
+    
     //manajemen modal
 
 

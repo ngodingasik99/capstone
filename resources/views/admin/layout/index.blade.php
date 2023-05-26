@@ -92,23 +92,23 @@
             </li>
             <li class="">
                 <a href="/kategori">
-                    <span><i class="ri-briefcase-line"></i></span>
+                    <span><i class="bi bi-tag-fill"></i></span>
                     <span class="nav-text">Kategori</span></a>
             </li>
             <li class="">
                 <a href="/produk">
-                    <span><i class="ri-heart-line"></i></span>
+                    <span><i class="bi bi-box-fill"></i></span>
                     <span class="nav-text">Produk</span></a>
             </li>
             <li class="">
-                <a href="collection.html">
-                    <span><i class="ri-star-line"></i></span>
-                    <span class="nav-text">Collection</span></a>
+                <a href="/akun">
+                    <span><i class="bi bi-person-circle"></i></span>
+                    <span class="nav-text">Akun</span></a>
             </li>
             <li class="">
                 <a href="wallet.html">
-                    <span><i class="ri-wallet-line"></i></span>
-                    <span class="nav-text">Wallet</span></a>
+                    <span><i class="bi bi-list-check"></i></span>
+                    <span class="nav-text">Transaksi</span></a>
             </li>
             <li class="">
                 <a href="profile.html">
@@ -192,6 +192,30 @@
             })
 
 
+    }
+</script>
+
+<script type="text/javascript">
+    
+    function hapusakun(id){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Confirm Delete!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+                window.location.href = "/akun/" + id
+            }
+            })
     }
 </script>
 
