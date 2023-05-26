@@ -9,6 +9,7 @@ use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
+
 class ProductController extends Controller
 {
     /**
