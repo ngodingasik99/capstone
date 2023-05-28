@@ -15,6 +15,14 @@ class KasirController extends Controller
     {
         return view('kasir.index');
     }
+    public function transaction()
+    {
+        return view('kasir.transaction');
+    }
+    public function listtransaction()
+    {
+        return view('kasir.listtransaction');
+    }
 
     /**
      * Show the form for creating a new resource.

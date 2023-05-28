@@ -60,9 +60,12 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
 });
 
 Route::group(['middleware' => ['userAkses:kasir', 'auth']], function () {
-    Route::get('/kasir',[KasirController::class, 'index'])->name('dashboard.kasir');
+    Route::get('/',[KasirController::class, 'index'])->name('dashboard.kasir');
+    Route::get('/kasir/transaction',[KasirController::class, 'transaction'])->name('dashboard.kasir');
+    Route::get('/kasir/listtansaction',[KasirController::class, 'listtransaction'])->name('dashboard.kasir');
 });
 
 Route::get('/logout',[SesiController::class,'logout'])->name('logout');
 
 Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('dashboard');
+
