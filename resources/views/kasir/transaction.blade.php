@@ -21,6 +21,10 @@
                                                 <p class="mb-2">Stok</p>
                                                 <h5 class="text-muted">100</h5>
                                             </div>
+                                            <div class="text-start justify-content-center">
+                                                <p class="mb-2 ">Qty</p>
+                                                <input type="number">
+                                            </div>
                                             <div class="text-end">
                                                 <p class="mb-2">Harga</strong></p>
                                                 <h5 class="text-muted">14.000</h5>
@@ -43,6 +47,10 @@
                                             <div class="text-start">
                                                 <p class="mb-2">Stok</p>
                                                 <h5 class="text-muted">100</h5>
+                                            </div>
+                                            <div class="text-start justify-content-center">
+                                                <p class="mb-2 ">Qty</p>
+                                                <input type="number">
                                             </div>
                                             <div class="text-end">
                                                 <p class="mb-2">Harga</strong></p>

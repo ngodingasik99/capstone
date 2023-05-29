@@ -48,21 +48,153 @@
                                 </div>
                             </div>
                             <div tabindex="-1" role="menu" aria-hidden="true"
+                                class="dropdown-menu notification-list dropdown-menu dropdown-menu-right" style="overflow:auto;width:400px;height:400px;padding:10px; solid #eee">
+                                <h4>Cart tarnsaction</h4>
+                                <div class="lists">
+                                    {{-- <a class="" href="index.html#"> --}}
+                                        <div class="d-flex align-items-center">
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <thead>
+                                                      <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">nama produk</th>
+                                                        <th scope="col">foto</th>
+                                                        <th scope="col">jumlah</th>
+                                                        <th scope="col">harga</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                        <td><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></td>
+                                                        <td><input type="number" style="width:50px;" value=""></td>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                        <td><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></td>
+                                                        <td><input type="number" style="width:50px;" value=""></td>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                        <td><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></td>
+                                                        <td><input type="number" style="width:50px;" value=""></td>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                        <td><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></td>
+                                                        <td><input type="number" style="width:50px;" value=""></td>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                        <td><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></td>
+                                                        <td><input type="number" style="width:50px;" value=""></td>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                        <td><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></td>
+                                                        <td><input type="number" style="width:50px;" value=""></td>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                        <td><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></td>
+                                                        <td><input type="number" style="width:50px;" value=""></td>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                        <td><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></td>
+                                                        <td><input type="number" style="width:50px;" value=""></td>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                      </tr>
+                                                      <tr>
+                                                        <th scope="row">1</th>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                        <td><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></td>
+                                                        <td><input type="number" style="width:50px;" value=""></td>
+                                                        <td>
+                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+                                                        </td>
+                                                      </tr>
+                                                    </tbody>
+                                                </table>
+                                                
+                                            <a href="#"><p class="btn btn-primary">Checkout</p></a>
+                                            </div>
+                                        </div>
+                                    {{-- </a> --}}
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <div class="nav-item dropdown notification dropdown">
+                            <div data-bs-toggle="dropdown" aria-haspopup="true" class="" aria-expanded="false">
+                                <div class="notify-bell icon-menu"><span><i class="fa fa-shopping-cart"></i></span>
+                                </div>
+                            </div>
+                            <div tabindex="-1" role="menu" aria-hidden="true"
                                 class="dropdown-menu notification-list dropdown-menu dropdown-menu-right" style="overflow:auto;height:400px;padding:10px; solid #eee">
                                 <h4>Cart</h4>
                                 <div class="lists">
-                                    <a class="" href="index.html#">
-                                        <div class="d-flex align-items-center"><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></span>
-                                            <div>
-                                                <p>Account created successfully</p><span>2020-11-04 12:00:23</span>
+                                        <div class="d-flex align-items-left"><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></span></div>
+                                            <div class="d-flex justify-content-right">
+                                                <span>Harga</span>
                                             </div>
-                                        </div>
-                                    </a>
+                                        
+                                        <hr>
                                     <a style="text:bold">Total</a>
                                     <a href="#"><h5 class="btn btn-primary">Checkout</h5></a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="dropdown profile_log dropdown">
                             <div data-bs-toggle="dropdown" aria-haspopup="true" class="" aria-expanded="false">
                                 <div class="user icon-menu active"><span><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></span>
