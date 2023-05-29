@@ -44,7 +44,7 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
 
     //kelola akun
     Route::get('/akun', [AccountController::class, 'index']);
-    Route::post('/akun/store', [AccountController::class, 'store']);
+    Route::post('/akun/store', [AccountController::class, 'store']); 
     Route::put('/akun/{id}', [AccountController::class, 'update']);
     Route::get('/akun/{id}', [AccountController::class, 'destroy']);
     
