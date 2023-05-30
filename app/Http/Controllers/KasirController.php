@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rules\File;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class KasirController extends Controller
 {
@@ -17,7 +21,8 @@ class KasirController extends Controller
     }
     public function transaction()
     {
-        return view('kasir.transaction');
+        $data['kasir'] = Product::all();
+        return view('kasir.transaction', $data);
     }
     public function listtransaction()
     {
