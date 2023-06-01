@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -22,6 +24,12 @@ class KasirController extends Controller
     public function transaction()
     {
         $data['kasir'] = Product::all();
+        $data['carts'] = Cart::all();
+        $data['totalPrice'] = 0;
+
+        foreach ($data['carts'] as $cart) {   
+            $data['totalPrice'] +=  $cart->product->price * $cart->qty;
+        }
         return view('kasir.transaction', $data);
     }
     public function listtransaction()
@@ -93,5 +101,27 @@ class KasirController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addProduct(Request $request)
+    {
+        $product_id = $request->input('product_id');
+        $product_qty = $request->input('product_qty');
+
+        $cartItem = new Cart();
+            $cartItem->product_id = $product_id;
+            $cartItem->qty = $product_qty;
+            $cartItem->save();
+        if (Cart::where('product_id', $product_id)->exists()) {
+            return response()->json(['status' => "Added to Cart"]);
+        } else {
+            $cartItem = new Cart();
+            $cartItem->product_id = $product_id;
+            $cartItem->qty = $product_qty;
+            $cartItem->save();
+
+            return response()->json(['status' => "Added to Cart"]);
+        }
+        
     }
 }

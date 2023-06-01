@@ -44,7 +44,7 @@ class ProductController extends Controller
             'product_name' => 'required|max:50',
             'price' => 'required|numeric|min:0',
             'category_id' => 'required',
-            'description' => 'required|max:50',
+            'description' => 'required|max:100',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'stock' => 'required|numeric|min:1'
         ]);
@@ -65,7 +65,7 @@ class ProductController extends Controller
             'product_name' => 'required|max:50',
             'price' => 'required|numeric|min:0',
             'category_id' => 'required',
-            'description' => 'required|max:50',
+            'description' => 'required|max:100',
             'photo' => [File::types(['jpg', 'jpeg', 'png', 'gif'])->max(2 * 1024)],
             'stock' => 'required|numeric|min:1',
         ]);

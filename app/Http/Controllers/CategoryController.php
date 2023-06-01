@@ -55,7 +55,7 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name' => 'required|max:50',
-            'description' => 'required|max:50',
+            'description' => 'required|max:100',
             'photo' => [File::types(['jpg', 'jpeg', 'png', 'gif'])->max(2 * 1024)],
 
         ]);

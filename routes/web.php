@@ -69,3 +69,4 @@ Route::get('/logout',[SesiController::class,'logout'])->name('logout');
 
 Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('dashboard');
 
+Route::post('/add-to-cart', [KasirController::class, 'addProduct']);

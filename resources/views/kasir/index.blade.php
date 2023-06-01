@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!---- Website Information ---->
     <title>ENFTX - NFT Dashboard HTML Template</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="description"
         content="ENFTX is the complete UX & UI dashboard for NFT. Here included bids, collection, wallet, and all user setting pages including profile, application, activity, payment method, api, sign in & sign up etc.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,7 +22,7 @@
 </head>
 
 <body class="@@dashboard">
-
+    @include('sweetalert::alert')
 <div id="preloader"><i>.</i><i>.</i><i>.</i></div>
 
 <div id="main-wrapper">
@@ -66,23 +67,29 @@
                                                       </tr>
                                                     </thead>
                                                     <tbody>
-                                                      <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>
-                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                                                        </td>
-                                                        <td><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></td>
-                                                        <td><input type="number" style="width:50px;" value=""></td>
-                                                        <td>
-                                                            <div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
-                                                        </td>
-                                                        <td class="">
-                                                            <a href="#" title="Delete" class="bi bi-trash"></a>
-                                                        </td>
-                                                      </tr>
+                                                        @php
+                                                            $no = 1;
+                                                        @endphp
+                                                        @foreach ($carts as $cart)
+                                                            <tr>
+                                                                <th scope="row">{{ $no++ }}</th>
+                                                                <td>
+                                                                    <div class="">{{ $cart->product->product_name }}</div>
+                                                                </td>
+                                                                <td><img src="{{asset('storage/' . $cart->product->photo)}}" width="50px" height="50px" alt=""></td>
+                                                                <td><input type="number" style="width:50px;" value="{{ $cart->qty }}"></td>
+                                                                <td>
+                                                                    <div class="">Rp. {{ number_format($cart->product->price) }}</div>
+                                                                </td>
+                                                                <td class="">
+                                                                    <a href="#" title="Delete" class="bi bi-trash"></a>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                      
                                                     </tbody>
                                                 </table>
-                                                
+                                                <h5>TOTAL : Rp. {{ number_format($totalPrice) }}</h5>
                                             <a href="#"><p class="btn btn-primary">Checkout</p></a>
                                             </div>
                                         </div>
@@ -251,6 +258,38 @@
 <script src="{{asset('enftx-html.vercel.app')}}/js/plugins/chartjs-line-init.js"></script>
 <script src="{{asset('enftx-html.vercel.app')}}/js/plugins/chartjs-donut.js"></script>
 <script src="{{asset('enftx-html.vercel.app')}}/js/scripts.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.addToCartBtn').click(function (e){
+            e.preventDefault();
+
+            var product_id = $(this).closest('.product_data').find('.prod_id').val();
+            var product_qty = $(this).closest('.product_data').find('.qty-input').val();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "POST",
+                url: "/add-to-cart",
+                data: {
+                    'product_id': product_id,
+                    'product_qty': product_qty,
+                },
+                success: function (response) {
+                    alert(response.status);
+                    $('.product_data').load();
+                    // location.reload('qty-input');
+                }
+            });
+        });
+
+    });
+</script>
+
 </body>
 <!-- Mirrored from enftx-html.vercel.app/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 May 2023 13:13:33 GMT -->
 </html>
