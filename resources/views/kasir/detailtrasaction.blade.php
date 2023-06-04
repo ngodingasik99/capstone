@@ -14,13 +14,20 @@
                     </div>
                 </div>
             </h4>
+            <div class="">
+                Code Transaction
+            </div>
         </div>
         <div class="table-responsive">
             <table class="table">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Code transaction</th>
+                        <th>Product name</th>
+                        <th>Image</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Sub total</th>
                         <th>Date</th>
                         <th>Total</th>
                         <th>Action</th>
@@ -29,6 +36,10 @@
                 <tbody>
                     {{-- @foreach ($users as $user => $item) --}}
                     <tr>
+                        <td></td>
+                        <td></td>
+                        <td><img src="" class="img-fluid rounded mb-3" width="50px" height="50px" alt=""></td>
+                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>

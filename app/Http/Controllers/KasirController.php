@@ -19,7 +19,13 @@ class KasirController extends Controller
      */
     public function index()
     {
-        return view('kasir.index');
+        $data['carts'] = Cart::all();
+        $data['totalPrice'] = 0;
+
+        foreach ($data['carts'] as $cart) {   
+            $data['totalPrice'] +=  $cart->product->price * $cart->qty;
+        }
+        return view('kasir.index', $data);
     }
     public function transaction()
     {
@@ -34,7 +40,23 @@ class KasirController extends Controller
     }
     public function listtransaction()
     {
-        return view('kasir.listtransaction');
+        $data['carts'] = Cart::all();
+        $data['totalPrice'] = 0;
+
+        foreach ($data['carts'] as $cart) {   
+            $data['totalPrice'] +=  $cart->product->price * $cart->qty;
+        }
+        return view('kasir.listtransaction', $data);
+    }
+    public function detailtrasaction()
+    {
+        $data['carts'] = Cart::all();
+        $data['totalPrice'] = 0;
+
+        foreach ($data['carts'] as $cart) {   
+            $data['totalPrice'] +=  $cart->product->price * $cart->qty;
+        }
+        return view('kasir.detailtrasaction', $data);
     }
 
     /**

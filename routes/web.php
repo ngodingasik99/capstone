@@ -63,6 +63,7 @@ Route::group(['middleware' => ['userAkses:kasir', 'auth']], function () {
     Route::get('/kasir',[KasirController::class, 'index'])->name('dashboard.kasir');
     Route::get('/kasir/transaction',[KasirController::class, 'transaction'])->name('transaction.kasir');
     Route::get('/kasir/listtansaction',[KasirController::class, 'listtransaction'])->name('listtransaction.kasir');
+    Route::get('/kasir/detailtrasaction',[KasirController::class, 'detailtrasaction'])->name('detailtrasaction.kasir');
 });
 
 Route::get('/logout',[SesiController::class,'logout'])->name('logout');
