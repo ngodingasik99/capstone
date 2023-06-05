@@ -102,14 +102,14 @@
                     <span class="nav-text">Produk</span></a>
             </li>
             <li class="">
-                <a href="/akun">
-                    <span><i class="bi bi-person-circle"></i></span>
-                    <span class="nav-text">Akun</span></a>
+                <a href="/kelolakeuangan">
+                    <span><i class="bi bi-newspaper"></i></span>
+                    <span class="nav-text">Kelola Keuangan</span></a>
             </li>
             <li class="">
-                <a href="wallet.html">
-                    <span><i class="bi bi-list-check"></i></span>
-                    <span class="nav-text">Transaksi</span></a>
+                <a href="/kasir">
+                    <span><i class="bi bi-person-circle"></i></span>
+                    <span class="nav-text">Akun</span></a>
             </li>
             <li class="">
                 <a href="profile.html">
@@ -190,6 +190,31 @@
                 'success'
                 )
                 window.location.href = "/produk/" + id
+            }
+            })
+
+
+    }
+</script>
+<script type="text/javascript">
+    
+    function hapusmodal(id){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Confirm Delete!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+                window.location.href = "/kelolakeuangan/" + id
             }
             })
 

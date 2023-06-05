@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AkunkasirController;
+use App\Http\Controllers\ManagefinancesController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -48,11 +49,11 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     Route::put('/akun/{id}', [AccountController::class, 'update']);
     Route::get('/akun/{id}', [AccountController::class, 'destroy']);
     
-    //manajemen modal
-
-
-
-
+    //Kelola keuangan
+    Route::get('/kelolakeuangan', [ManagefinancesController::class, 'index']);
+    Route::post('/kelolakeuangan/store', [ManagefinancesController::class, 'store']);
+    Route::put('/kelolakeuangan/{id}', [ManagefinancesController::class, 'update']);
+    Route::get('/kelolakeuangan/{id}', [ManagefinancesController::class, 'destroy']);
 
 
 

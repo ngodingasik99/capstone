@@ -1,62 +1,62 @@
 @extends('admin.layout.index')
 
 @section('content')
-        <div class="content-body">
-            <div class="container">
-                <div class="card-header flex-row">
-                    <h4 class="card-title">
-                        <div class="input-group">
-                            <div class="form-outline">
-                              <form action="/produk" method="GET">
-                                <input type="search" id="form1" name="search" class="form-control" placeholder="Searching">
-                            </form>
-                            </div>
-                        </div>    
-                    </h4>                    
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <i class="bi bi-plus-circle"></i>  Add product
-                    </button>
-                </div>
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Product name</th>
-                                <th>Image</th>
-                                <th>Description</th>
-                                <th>Stock</th>
-                                <th>Price</th>
-                                <th>Category name</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($product as $number => $item)
-                            <tr>
-                                <td class="">{{$number + $product->firstItem()}}</td>
-                                <td>{{$item->product_name}}</td>
-                                <td><img src="{{asset('storage/' . $item->photo)}}" alt="" width="50px" height="50px"
-                                    class="me-2 rounded-circle"></td>
-                                <td>{{$item->description}}</td>
-                                <td>{{$item->stock}}</td>
-                                <td>Rp. {{number_format($item->price)}}</td>
-                                <td>{{$item->category->category_name}}</td>
-                                <td>
-                                    <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$item->id}}" data-bs-placement="bottom" title="edit"></button>
-                                    <button class="btn-danger btn-sm bi bi-trash" onclick="hapusproduk({{ $item->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"></button>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <div class="my-3 d-flex justify-content-center">
-                        {{$product->onEachSide(0)->links()}}
-                    </div>
+    <div class="content-body">
+        <div class="container">
+            <div class="card-header flex-row">
+                <h4 class="card-title">
+                    <div class="input-group">
+                        <div class="form-outline">
+                            <form action="/produk" method="GET">
+                            <input type="search" id="form1" name="search" class="form-control" placeholder="Searching">
+                        </form>
+                        </div>
+                    </div>    
+                </h4>                    
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <i class="bi bi-plus-circle"></i>  Add product
+                </button>
+            </div>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Product name</th>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Stock</th>
+                            <th>Price</th>
+                            <th>Category name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($product as $number => $item)
+                        <tr>
+                            <td class="">{{$number + $product->firstItem()}}</td>
+                            <td>{{$item->product_name}}</td>
+                            <td><img src="{{asset('storage/' . $item->photo)}}" alt="" width="50px" height="50px"
+                                class="me-2 rounded-circle"></td>
+                            <td>{{$item->description}}</td>
+                            <td>{{$item->stock}}</td>
+                            <td>Rp. {{number_format($item->price)}}</td>
+                            <td>{{$item->category->category_name}}</td>
+                            <td>
+                                <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$item->id}}" data-bs-placement="bottom" title="edit"></button>
+                                <button class="btn-danger btn-sm bi bi-trash" onclick="hapusproduk({{ $item->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"></button>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                <div class="my-3 d-flex justify-content-center">
+                    {{$product->onEachSide(0)->links()}}
                 </div>
             </div>
         </div>
+    </div>
 </div>
 
 @foreach ($product as $item)
