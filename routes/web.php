@@ -32,7 +32,7 @@ Route::get('/home', function(){
 
 Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     Route::get('/admin',[AdminController::class, 'index'])->name('dashboard.admin');
-
+    
     Route::get('/kategori', [CategoryController::class, 'index']);
     Route::post('/kategori/store', [CategoryController::class, 'store']);
     Route::put('/kategori/{id}', [CategoryController::class, 'action']);

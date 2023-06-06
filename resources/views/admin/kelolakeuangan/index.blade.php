@@ -15,7 +15,7 @@
             </h4>                    
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                <i class="bi bi-plus-circle"></i>  Add capital
+                <i class="bi bi-plus-circle"></i>Add capital
             </button>
         </div>
         <div class="table-responsive">
@@ -36,7 +36,7 @@
                     @foreach ($keuangan as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>{{$item->modal}}</td>
+                        <td>Rp. {{number_format($item->modal)}}</td>
                         <td>900</td>
                         <td>15.000.000</td>
                         <td>10.000.000</td>
@@ -45,18 +45,6 @@
                             <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$item->id}}" data-bs-placement="bottom" title="edit"></button>
                             <button class="btn-danger btn-sm bi bi-trash" onclick="hapusmodal({{ $item->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"></button>
                         </td>
-                        {{-- <td class="">{{$number + $product->firstItem()}}</td>
-                        <td>{{$item->product_name}}</td>
-                        <td><img src="{{asset('storage/' . $item->photo)}}" alt="" width="50px" height="50px"
-                            class="me-2 rounded-circle"></td>
-                        <td>{{$item->description}}</td>
-                        <td>{{$item->stock}}</td>
-                        <td>Rp. {{number_format($item->price)}}</td>
-                        <td>{{$item->category->category_name}}</td>
-                        <td>
-                            <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$item->id}}" data-bs-placement="bottom" title="edit"></button>
-                            <button class="btn-danger btn-sm bi bi-trash" onclick="hapusproduk({{ $item->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"></button>
-                        </td> --}}
                     </tr>
                     @endforeach
                 </tbody>

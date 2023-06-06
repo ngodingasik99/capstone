@@ -107,7 +107,7 @@
                     <span class="nav-text">Kelola Keuangan</span></a>
             </li>
             <li class="">
-                <a href="/kasir">
+                <a href="/akun">
                     <span><i class="bi bi-person-circle"></i></span>
                     <span class="nav-text">Akun</span></a>
             </li>

@@ -20,19 +20,21 @@
                 <div class="widget-icon me-3 bg-success"><span><i class="ri-file-list-3-line"></i></span></div>
                 <div class="widget-content">
                     <h3>25.000.000</h3>
-                    <p>Pendapatan</p>
+                    <p>Total Pendapatan</p>
                 </div>
             </div>
         </div>
+        @foreach ($pendapatan as $item)            
         <div class="col-xl-3 col-sm-6">
             <div class="stat-widget d-flex align-items-center">
                 <div class="widget-icon me-3 bg-warning"><span><i class="ri-file-paper-line"></i></span></div>
                 <div class="widget-content">
-                    <h3>15.000.000</h3>
-                    <p>Modal</p>
+                    <h3>Rp. {{number_format($item->modal)}}</h3>
+                    <p>Modal Penjualan</p>
                 </div>
             </div>
         </div>
+        @endforeach
         <div class="col-xl-3 col-sm-6">
             <div class="stat-widget d-flex align-items-center">
                 <div class="widget-icon me-3 bg-danger"><span><i class="ri-file-paper-2-line"></i></span></div>

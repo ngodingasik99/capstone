@@ -10,9 +10,14 @@ class ManagefinancesController extends Controller
 {
     public function index()
     {
-        $keuangan = Managefinances::ambildata();
+        $keuangan = Managefinances::all();
         return view('admin.kelolakeuangan.index', compact('keuangan'));
     }
+    // public function card()
+    // {
+    //     $keuangan = Managefinances::all();
+    //     return view('admin.index', compact('keuangan'));
+    // }
 
     public function store(Request $request)
     {
