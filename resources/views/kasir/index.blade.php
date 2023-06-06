@@ -88,7 +88,7 @@
                                                 </tbody>
                                             </table>
                                             <h5>TOTAL : Rp. {{ number_format($totalPrice) }}</h5>
-                                        <a href="#"><p class="btn btn-primary">Checkout</p></a>
+                                        <a href="/kasir/checkout"><p class="btn btn-primary">Checkout</p></a>
                                         </div>
                                     </div>
                                 </div>

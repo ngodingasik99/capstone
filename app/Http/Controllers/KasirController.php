@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Transaction;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\ProductTransaction;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\File;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -125,25 +129,74 @@ class KasirController extends Controller
         //
     }
 
-    public function addProduct(Request $request)
+    public function addtocart(Request $request, $id)
     {
-        $product_id = $request->input('product_id');
-        $product_qty = $request->input('product_qty');
+        $data['kasir'] = Product::all();
+        $data['carts'] = Cart::all();
+        $data['totalPrice'] = 0;
 
-        $cartItem = new Cart();
-            $cartItem->product_id = $product_id;
-            $cartItem->qty = $product_qty;
-            $cartItem->save();
-        if (Cart::where('product_id', $product_id)->exists()) {
-            return response()->json(['status' => "Added to Cart"]);
-        } else {
-            $cartItem = new Cart();
-            $cartItem->product_id = $product_id;
-            $cartItem->qty = $product_qty;
-            $cartItem->save();
-
-            return response()->json(['status' => "Added to Cart"]);
+        foreach ($data['carts'] as $cart) {   
+            $data['totalPrice'] +=  $cart->product->price * $cart->qty;
         }
-        
+
+        $request->validate([
+            'qty' => 'required|numeric|min:1',
+        ]);
+
+        $carts = DB::table('carts')
+                ->where('product_id', '=', $id)
+                ->first();
+        // $cart = Cart::find($id);
+        // dd($carts);
+        if ( is_null($carts)) {
+            Cart::create([
+                'product_id' => $id,
+                'qty' => $request->qty
+            ]);
+        } else {
+            Cart::where('product_id', $id)->update([
+                'qty' => $request->qty
+            ]);
+        }
+
+        Alert::success('Success', 'Product has been added to cart');
+        return redirect('/kasir/transaction');
+    }
+
+    public function checkout()
+    {
+        $generate_trs_code = 'KLPK12-'. Str::random(10);
+        $totalPrice = 0;
+        $carts = Cart::all();
+        foreach ($carts as $cart) {   
+            $totalPrice +=  $cart->product->price * $cart->qty;
+        }
+        $userID = Auth()->user()->id;
+
+        $transaction = ([
+            'user_id' => $userID,
+            'transaction_code' => $generate_trs_code,
+            'total' => $totalPrice
+        ]);
+
+        $transactionID = Transaction::create($transaction);
+        // dd($transactionID->id);
+
+        foreach ($carts as $item) {
+            $store = ([
+                'transaction_id' => $transactionID->id,
+                'product_id' => $item->product_id,
+                'product_name' => $item->product->product_name,
+                'price' => $item->product->price,
+                'subtotal' => $item->product->price * $item->qty,
+                'qty' => $item->qty
+            ]);
+            ProductTransaction::create($store);
+        }
+
+        DB::table('carts')->truncate();
+
+        Alert::success('Success', 'Checkout success');
+        return redirect('/kasir/transaction');
     }
 }
