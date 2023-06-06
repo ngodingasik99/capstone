@@ -49,7 +49,7 @@ class MonthlyTransactionChart
             ->setTitle('Transaction')
             ->setSubtitle(date('m'))
             // ->addData('Physical sales', $data)
-            ->addData('Digital sales', [70, 29, 77, 28, 55, 45])
+            ->addData('Digital sales', [70, 29, 85, 28, 55, 45])
             ->setColors(['#ffc63b', '#ff6384'])
             ->setXAxis($label)
             // ->setXAxis($transactions->pluck('created_at'))

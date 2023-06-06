@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\DB;
 class Managefinances extends Model
 {
     use HasFactory;
-    protected $table = 'managefinances';
+    // protected $table = 'managefinances';
     protected $fillable = [
         'modal'
     ];
 
-    static function ambildata()
-    {
-        return DB::select('SELECT * FROM managefinances');
-    }
+    // static function ambildata()
+    // {
+    //     return DB::select('SELECT * FROM managefinances');
+    // }
 }
