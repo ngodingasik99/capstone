@@ -9,8 +9,8 @@
                         <div class="card-body bs-0 p-0 bg-transparent">
                             <div class="row">
                                 @foreach ($kasir as $item)
-                                    <div class="col-xxl-3 col-xl-4 col-lg-3 col-md-3 col-sm-3">
-                                        <div   class="card items">
+                                    <div class="col-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                                        <div class="card items">
                                             <div class="card-body">
 
                                                 <div class="items-img position-relative"><img
@@ -35,8 +35,11 @@
                                                         <h5 class="text-muted">{{ $item->price }}</h5>
                                                     </div>
                                                 </div>
-                                                <div class="d-flex justify-content-center mt-3"><a href="#"
-                                                        class="btn btn-primary">Add to cart</a>
+                                                <div class="d-flex justify-content-center mt-3">
+                                                    <button class="btn btn-primary btn-add-cart"
+                                                        data-value="{{ $item }}">
+                                                        Add to cart
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -80,3 +83,29 @@
     </div>
     </div>
 @endsection
+
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+
+            $(".btn-add-cart").click(function(e) {
+                var item = $(this).attr('data-value');
+
+                e.preventDefault(); // this prevents the form from submitting
+                $.ajax({
+                    url: '/kasir/cart/store',
+                    type: "post",
+                    data: {
+                        'product_id': 1,
+                        'qty': 0
+                    },
+                    dataType: 'JSON',
+                    success: function(data) {
+                        console.log(data); // this is good
+                    }
+                });
+            })
+        })
+    </script>
+@endpush

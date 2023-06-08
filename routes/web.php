@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AkunkasirController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
@@ -25,12 +26,12 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/', [SesiController::class, 'login']);
 });
 
-Route::get('/home', function(){
+Route::get('/home', function () {
     return redirect('/admin');
 });
 
 Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
-    Route::get('/admin',[AdminController::class, 'index'])->name('dashboard.admin');
+    Route::get('/admin', [AdminController::class, 'index'])->name('dashboard.admin');
 
     Route::get('/kategori', [CategoryController::class, 'index']);
     Route::post('/kategori/store', [CategoryController::class, 'store']);
@@ -44,10 +45,10 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
 
     //kelola akun
     Route::get('/akun', [AccountController::class, 'index']);
-    Route::post('/akun/store', [AccountController::class, 'store']); 
+    Route::post('/akun/store', [AccountController::class, 'store']);
     Route::put('/akun/{id}', [AccountController::class, 'update']);
     Route::get('/akun/{id}', [AccountController::class, 'destroy']);
-    
+
     //manajemen modal
 
 
@@ -60,12 +61,13 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
 });
 
 Route::group(['middleware' => ['userAkses:kasir', 'auth']], function () {
-    Route::get('/kasir',[KasirController::class, 'index'])->name('dashboard.kasir');
-    Route::get('/kasir/transaction',[KasirController::class, 'transaction'])->name('transaction.kasir');
-    Route::get('/kasir/listtansaction',[KasirController::class, 'listtransaction'])->name('listtransaction.kasir');
+    Route::get('/kasir', [KasirController::class, 'index'])->name('dashboard.kasir');
+    Route::get('/kasir/transaction', [KasirController::class, 'transaction'])->name('transaction.kasir');
+    Route::get('/kasir/listtansaction', [KasirController::class, 'listtransaction'])->name('listtransaction.kasir');
+
+    Route::post('/kasir/cart/store', [CartController::class, 'store'])->name('cart.store');
 });
 
-Route::get('/logout',[SesiController::class,'logout'])->name('logout');
+Route::get('/logout', [SesiController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('dashboard');
-
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
