@@ -12,7 +12,7 @@
                                     <div class="col-6 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                         <div class="card items">
                                             <div class="card-body">
-
+ 
                                                 <div class="items-img position-relative"><img
                                                         src="{{ asset('storage/' . $item->photo) }}"
                                                         style="width:500px; height:200px;" class="img-fluid rounded mb-3"
