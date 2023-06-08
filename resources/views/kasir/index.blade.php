@@ -75,7 +75,18 @@
                                                                 <div class="">{{ $cart->product->product_name }}</div>
                                                             </td>
                                                             <td><img src="{{asset('storage/' . $cart->product->photo)}}" width="50px" height="50px" alt=""></td>
-                                                            <td><input type="number" style="width:50px;" value="{{ $cart->qty }}"></td>
+                                                            {{-- <td><input type="number" style="width:50px;" value="{{ $cart->qty }}"></td> --}}
+                                                            <td>
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="input-group text-center mb-3" style="width: 130px">
+                                                                            <button class="input-group-text decrement-btn">-</button>
+                                                                            <input type="text" name="qty" class="form-control text-center" value="{{ $cart->qty }}">
+                                                                            <button class="input-group-text increment-btn">+</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
                                                             <td>
                                                                 <div class="">Rp. {{ number_format($cart->product->price) }}</div>
                                                             </td>
@@ -88,6 +99,15 @@
                                                 </tbody>
                                             </table>
                                             <h5>TOTAL : Rp. {{ number_format($totalPrice) }}</h5>
+                                            <input type="text" hidden name="total" id="total" value="{{ $totalPrice }}">
+                                            <div class="mb-3">
+                                                <label for="qty" class="form-label">Pay</label>
+                                                <input type="number" class="form-control" id="pay" name="pay" placeholder="Pay" onkeyup="InputSub();">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="subtotal" class="form-label">Cashback</label>
+                                                <input type="number" class="form-control" id="cashback" name="cashback" placeholder="Cashback" min="{{ $totalPrice }}" readonly>
+                                            </div>
                                         <a href="/kasir/checkout"><p class="btn btn-primary">Checkout</p></a>
                                         </div>
                                     </div>
@@ -161,6 +181,18 @@
 <script src="{{asset('enftx-html.vercel.app')}}/js/scripts.js"></script>
 
 <script>
+    function InputSub() {
+          var total =  parseInt(document.getElementById('total').value);
+          var pay =  parseInt(document.getElementById('pay').value);
+          var hasil = parseInt(pay) - parseInt(total);
+          if (!isNaN(hasil)) {
+            document.getElementById('cashback').value = hasil;
+            console.log(hasil)
+          };
+        }
+</script>
+
+<script>
     $(document).ready(function () {
         $('.addToCartBtn').click(function (e){
             e.preventDefault();
@@ -189,6 +221,10 @@
         });
 
     });
+</script>
+
+<script>
+    $('.increment-btn').click()
 </script>
 
 </body>

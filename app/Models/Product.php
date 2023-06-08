@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Transaction;
+use App\Models\ProductTransaction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,4 +39,9 @@ class Product extends Model
         return DB::select("SELECT COUNT(created_at) AS total, created_at FROM `products` GROUP BY `created_at` HAVING MONTH(created_at) = $month");
     }
     //test chart
+
+    public function transactions()
+    {
+        return $this->belongsToMany(Transaction::class)->using(ProductTransaction::class)->withPivot('product_name', 'price', 'subtotal');
+    }
 }
