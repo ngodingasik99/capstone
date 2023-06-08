@@ -7,9 +7,10 @@
             <h4 class="card-title">
                 <div class="input-group">
                     <div class="form-outline">
-                        <form action="/kelolakeuangan" method="GET">
-                        <input type="search" id="form1" name="search" class="form-control" placeholder="Searching">
-                    </form>
+                        <div class="">Uang awal di kasir 300.000</div>
+                        {{-- <form action="/kelolakeuangan" method="GET">
+                            <input type="search" id="form1" name="search" class="form-control" placeholder="Searching">
+                        </form> --}}
                     </div>
                 </div>    
             </h4>                    
@@ -23,11 +24,13 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>tanggal</th>
                         <th>Jumlah modal</th>
                         <th>Total transaksi</th>
-                        <th>Uang akhir</th>
-                        <th>Laba</th>
-                        <th>Tanggal</th>
+                        <th>Pengeluaran</th>
+                        <th>Nota</th>
+                        <th>Uang Akhir</th>
+                        <th>Keuntungan</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -36,11 +39,13 @@
                     @foreach ($keuangan as $item)
                     <tr>
                         <td>{{$loop->iteration}}</td>
-                        <td>Rp. {{number_format($item->modal)}}</td>
-                        <td>900</td>
-                        <td>15.000.000</td>
-                        <td>10.000.000</td>
                         <td>19-09-1999</td>
+                        <td>Rp. {{number_format($item->modal)}}</td>
+                        <td>190.000</td>
+                        <td>90.000</td>
+                        <td><img src="{{asset('enftx-html.vercel.app/images/profile/logo.jpeg')}}" width="50px" alt=""></td>
+                        <td>12.000.000</td>
+                        <td>10.000.000</td>
                         <td>
                             <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$item->id}}" data-bs-placement="bottom" title="edit"></button>
                             <button class="btn-danger btn-sm bi bi-trash" onclick="hapusmodal({{ $item->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"></button>
