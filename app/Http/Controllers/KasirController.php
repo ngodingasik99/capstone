@@ -44,6 +44,7 @@ class KasirController extends Controller
     }
     public function listtransaction()
     {
+        $data['transactions']= Transaction::all();
         $data['carts'] = Cart::all();
         $data['totalPrice'] = 0;
 
@@ -52,7 +53,7 @@ class KasirController extends Controller
         }
         return view('kasir.listtransaction', $data);
     }
-    public function detailtrasaction()
+    public function detailtrasaction($id)
     {
         $data['carts'] = Cart::all();
         $data['totalPrice'] = 0;
@@ -60,6 +61,14 @@ class KasirController extends Controller
         foreach ($data['carts'] as $cart) {   
             $data['totalPrice'] +=  $cart->product->price * $cart->qty;
         }
+
+        $data['trsDetail'] = ProductTransaction::all()->where('transaction_id', $id);
+        $data['trsCode'] = Transaction::where('id', $id)->first();
+        $data['total'] = 0;
+        foreach ($data['trsDetail'] as $trs) {   
+            $data['total'] +=  $trs->price * $trs->qty;
+        }
+
         return view('kasir.detailtrasaction', $data);
     }
 
@@ -146,8 +155,7 @@ class KasirController extends Controller
         $carts = DB::table('carts')
                 ->where('product_id', '=', $id)
                 ->first();
-        // $cart = Cart::find($id);
-        // dd($carts);
+
         if ( is_null($carts)) {
             Cart::create([
                 'product_id' => $id,
@@ -167,36 +175,49 @@ class KasirController extends Controller
     {
         $generate_trs_code = 'KLPK12-'. Str::random(10);
         $totalPrice = 0;
+        $stockReady = true;
         $carts = Cart::all();
         foreach ($carts as $cart) {   
             $totalPrice +=  $cart->product->price * $cart->qty;
+            if ($cart->product->stock < $cart->qty ) {
+                $stockReady = false;
+            }
         }
-        $userID = Auth()->user()->id;
+        
+        if ($stockReady == true) {
+            $userID = Auth()->user()->id;
 
-        $transaction = ([
-            'user_id' => $userID,
-            'transaction_code' => $generate_trs_code,
-            'total' => $totalPrice
-        ]);
-
-        $transactionID = Transaction::create($transaction);
-        // dd($transactionID->id);
-
-        foreach ($carts as $item) {
-            $store = ([
-                'transaction_id' => $transactionID->id,
-                'product_id' => $item->product_id,
-                'product_name' => $item->product->product_name,
-                'price' => $item->product->price,
-                'subtotal' => $item->product->price * $item->qty,
-                'qty' => $item->qty
+            $transaction = ([
+                'user_id' => $userID,
+                'transaction_code' => $generate_trs_code,
+                'total' => $totalPrice
             ]);
-            ProductTransaction::create($store);
+
+            $transactionID = Transaction::create($transaction);
+            // dd($transactionID->id);
+            foreach ($carts as $item) {
+                
+                $product = product::find($item->product_id);
+                $product->stock = $item->product->stock - $item->qty;
+                $product->save();
+                $store = ([
+                    'transaction_id' => $transactionID->id,
+                    'product_id' => $item->product_id,
+                    'product_name' => $item->product->product_name,
+                    'price' => $item->product->price,
+                    'subtotal' => $item->product->price * $item->qty,
+                    'qty' => $item->qty
+                ]);
+                ProductTransaction::create($store);
+            }
+    
+            DB::table('carts')->truncate();
+    
+            Alert::success('Success', 'Checkout success');
+        } else {
+            Alert::error('failed', 'Not enough stock');
         }
 
-        DB::table('carts')->truncate();
-
-        Alert::success('Success', 'Checkout success');
         return redirect('/kasir/transaction');
     }
 }

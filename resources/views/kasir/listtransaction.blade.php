@@ -27,17 +27,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($users as $user => $item) --}}
+                    @foreach ($transactions as $transaction)
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $transaction->transaction_code }}</td>
+                        <td>{{ $transaction->created_at }}</td>
+                        <td>{{ $transaction->total }}</td>
                         <td>
-                            <a href="/kasir/detailtrasaction" class="btn-primary btn-sm bi bi-pencil-square" title="Detail"></a>
+                            <a href="/kasir/detailtrasaction/{{ $transaction->id }}" class="btn-primary btn-sm bi bi-info-circle-fill" title="Detail"></a>
+                            <a href="#" class="btn-primary btn-sm bi bi-printer-fill" title="Print"></a>
                         </td>
                     </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
             <div class="my-3 d-flex justify-content-center">

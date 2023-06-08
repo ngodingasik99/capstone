@@ -15,7 +15,10 @@
                 </div>
             </h4>
             <div class="">
-                Code Transaction
+                Total : Rp. {{ number_format($total) }}
+            </div>
+            <div class="">
+                Transaction Code : {{ $trsCode->transaction_code }}
             </div>
         </div>
         <div class="table-responsive">
@@ -24,31 +27,23 @@
                     <tr>
                         <th>#</th>
                         <th>Product name</th>
-                        <th>Image</th>
                         <th>Qty</th>
                         <th>Price</th>
                         <th>Sub total</th>
                         <th>Date</th>
-                        <th>Total</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($users as $user => $item) --}}
+                    @foreach ($trsDetail as $detail)
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td><img src="" class="img-fluid rounded mb-3" width="50px" height="50px" alt=""></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <a href="/kasir/detailtrasaction" class="btn-primary btn-sm bi bi-pencil-square" title="Detail"></a>
-                        </td>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $detail->product_name }}</td>
+                        <td>{{ $detail->qty }}</td>
+                        <td>{{ number_format($detail->price) }}</td>
+                        <td>{{ number_format($detail->subtotal) }}</td>
+                        <td>{{ $detail->created_at }}</td>
                     </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
             <div class="my-3 d-flex justify-content-center">
