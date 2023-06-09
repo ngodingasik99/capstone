@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('managefinances', function (Blueprint $table) {
             $table->id();
             $table->string('modal');
+            $table->date('tanggal')->nullable();
             $table->timestamps();
         });
     }
