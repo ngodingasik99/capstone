@@ -12,7 +12,7 @@ class ManagefinancesController extends Controller
     {
         $keuangan = Managefinances::all();
         return view('admin.kelolakeuangan.index', compact('keuangan'));
-    }
+    } 
 
     
 
