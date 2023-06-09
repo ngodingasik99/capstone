@@ -14,6 +14,8 @@
                     </div>
                 </div>
             </h4>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addreport"><i class="bi bi-plus-circle"></i> Add Report Daily</button>
         </div>
         <div class="table-responsive">
             <table class="table">
@@ -47,4 +49,39 @@
         </div>
     </div>
 </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="addreport" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addreportLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addreportLabel">Form Report Daily</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+    <div class="modal-body">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Penghasilan hari ini:</label>
+                <input type="text" class="form-control" id="recipient-name" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="recipient-name" class="col-form-label">Pengeluaran hari ini:</label>
+                <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+              <label for="photo" class="form-label">Nota Pengeluaran</label>
+              <input type="file" class="form-control" id="photo" name="photo" required>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
 @endsection
