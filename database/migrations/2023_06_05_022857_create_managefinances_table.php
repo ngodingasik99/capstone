@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('managefinances', function (Blueprint $table) {
             $table->id();
             $table->string('modal');
+            $table->string('pengeluaran');
+            $table->string('nota');
+            $table->integer('daily_omzet')->nullable();
+            $table->margin('margin')->nullable();
             $table->timestamps();
         });
     }

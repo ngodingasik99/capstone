@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Charts\MonthlyTransactionChart;
 use Illuminate\Http\Request;
 use App\Models\Managefinances;
+use App\Models\Transaction;
 
 class AdminController extends Controller
 {
@@ -15,18 +16,11 @@ class AdminController extends Controller
 
     public function dashboard( MonthlyTransactionChart $monthlyTransactionChart)
     {
-        $data['pendapatan'] = Managefinances::all();
-        $data['monthlyTransactionChart'] = $monthlyTransactionChart->build();
-        // dd($pendapatan, $data);
-        return view('admin.index', $data);
+        $total = Transaction::first();
+        // dd($total);
+        $modal = Managefinances::first();
+        $oke = $total->total - $modal->modal;
+        $pendapatan = Managefinances::all();
+        return view('admin.index', compact('pendapatan', 'oke', 'total'));
     }
-
-    // public function card()
-    // {
-    //     $pendapatan = Managefinances::all();
-    //     // dd($pendapatan);
-    //     return view('admin.index', compact('pendapatan'));
-    // }
-
-
 }
