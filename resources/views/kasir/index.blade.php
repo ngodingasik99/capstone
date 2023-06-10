@@ -72,26 +72,17 @@
                                                         <tr>
                                                             <th scope="row">{{ $no++ }}</th>
                                                             <td>
-                                                                <div class="">{{ $cart->product->product_name }}</div>
+                                                                <div>{{ $cart->product->product_name }}</div>
                                                             </td>
                                                             <td><img src="{{asset('storage/' . $cart->product->photo)}}" width="50px" height="50px" alt=""></td>
-                                                            {{-- <td><input type="number" style="width:50px;" value="{{ $cart->qty }}"></td> --}}
                                                             <td>
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <div class="input-group text-center mb-3" style="width: 130px">
-                                                                            <button class="input-group-text decrement-btn">-</button>
-                                                                            <input type="text" name="qty" class="form-control text-center" value="{{ $cart->qty }}">
-                                                                            <button class="input-group-text increment-btn">+</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                <div class="text-center">{{ $cart->qty }}</div>
                                                             </td>
                                                             <td>
-                                                                <div class="">Rp. {{ number_format($cart->product->price) }}</div>
+                                                                <div class="text-center">Rp. {{ number_format($cart->product->price) }}</div>
                                                             </td>
-                                                            <td class="">
-                                                                <a href="#" title="Delete" class="bi bi-trash"></a>
+                                                            <td>
+                                                                <a href="/kasir/delete-cart/{{ $cart->id }}" title="Delete"><i class="bi bi-trash-fill"></i></a>
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -102,7 +93,7 @@
                                             <input type="text" hidden name="total" id="total" value="{{ $totalPrice }}">
                                             <div class="mb-3">
                                                 <label for="qty" class="form-label">Pay</label>
-                                                <input type="number" class="form-control" id="pay" name="pay" placeholder="Pay" onkeyup="InputSub();">
+                                                <input type="number" class="form-control" id="pay" name="pay" placeholder="Pay" min="0" onkeyup="InputSub();">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="subtotal" class="form-label">Cashback</label>

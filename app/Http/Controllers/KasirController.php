@@ -220,4 +220,12 @@ class KasirController extends Controller
 
         return redirect('/kasir/transaction');
     }
+
+    public function deletecart($id) 
+    {
+        $cartItem = Cart::where('id', $id);
+        $cartItem->delete();
+        Alert::success('Success', 'Delete success');
+        return redirect('/kasir/transaction');
+    }
 }
