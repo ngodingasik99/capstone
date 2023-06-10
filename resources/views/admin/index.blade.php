@@ -10,7 +10,7 @@
             <div class="stat-widget d-flex align-items-center">
                 <div class="widget-icon me-3 bg-primary"><span><i class="ri-file-copy-2-line"></i></span></div>
                 <div class="widget-content">
-                    <h3>1000</h3>
+                    <h3>{{$total->count()}}</h3>
                     <p>Total transaksi</p>
                 </div>
             </div>
@@ -19,7 +19,7 @@
             <div class="stat-widget d-flex align-items-center">
                 <div class="widget-icon me-3 bg-success"><span><i class="ri-file-list-3-line"></i></span></div>
                 <div class="widget-content">
-                    <h3>{{$total->total}}</h3>
+                    <h3>Rp. {{$total->count()}}</h3>
                     <p>Total Pendapatan</p>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="stat-widget d-flex align-items-center">
                 <div class="widget-icon me-3 bg-danger"><span><i class="ri-file-paper-2-line"></i></span></div>
                 <div class="widget-content">
-                    <h3>{{number_format($oke)}}</h3>
+                    <h3>Rp. {{number_format($oke)}}</h3>
                     <p>Laba</p>
                 </div>
             </div>

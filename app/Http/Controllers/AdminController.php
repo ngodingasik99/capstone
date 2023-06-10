@@ -16,27 +16,11 @@ class AdminController extends Controller
 
     public function dashboard( MonthlyTransactionChart $monthlyTransactionChart)
     {
-        // $total = Transaction::all();
         $total = Transaction::first();
+        // dd($total);
         $modal = Managefinances::first();
-        // dd($modal);
         $oke = $total->total - $modal->modal;
-        // dd($modal, $oke);
-        // return view('admin.kelolakeuangan.index', compact('modalawal', 'total', 'oke', 'date'));
-
-
         $pendapatan = Managefinances::all();
-        // $pendapatan['monthlyTransactionChart'] = $monthlyTransactionChart->build();
-        // dd($pendapatan, $pendapatan);
         return view('admin.index', compact('pendapatan', 'oke', 'total'));
     }
-
-    // public function card()
-    // {
-    //     $pendapatan = Managefinances::all();
-    //     // dd($pendapatan);
-    //     return view('admin.index', compact('pendapatan'));
-    // }
-
-
 }

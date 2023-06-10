@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             ProductSeeder::class,
+            // ManagefinancesSeeder::class,
+            // TransactionSeeder::class,
         ]);
     }
 }
