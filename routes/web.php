@@ -9,6 +9,7 @@ use App\Http\Controllers\ManagefinancesController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,20 +43,19 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     Route::post('/produk/store', [ProductController::class, 'store']);
     Route::put('/produk/{id}', [ProductController::class, 'action']);
     Route::get('/produk/{id}', [ProductController::class, 'destroy']);
-
     //kelola akun
     Route::get('/akun', [AccountController::class, 'index']);
     Route::post('/akun/store', [AccountController::class, 'store']); 
     Route::put('/akun/{id}', [AccountController::class, 'update']);
     Route::get('/akun/{id}', [AccountController::class, 'destroy']);
-    
     //Kelola keuangan
     Route::get('/kelolakeuangan', [ManagefinancesController::class, 'index']);
     Route::post('/kelolakeuangan/store', [ManagefinancesController::class, 'store']);
     Route::put('/kelolakeuangan/{id}', [ManagefinancesController::class, 'update']);
     Route::get('/kelolakeuangan/{id}', [ManagefinancesController::class, 'destroy']);
-
-
+    //list transaksi admin
+    Route::get('/transaksi', [TransactionController::class, 'index']);
+    Route::get('/transaksi/detailtrasaction/{id}', [TransactionController::class, 'detailtrasaction']);
 
 
 });

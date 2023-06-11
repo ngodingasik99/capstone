@@ -95,19 +95,14 @@
                     <span class="nav-text">Kelola Keuangan</span></a>
             </li>
             <li class="">
+                <a href="/transaksi">
+                    <span><i class="bi bi-cash"></i></span>
+                    <span class="nav-text">Transaksi</span></a>
+            </li>
+            <li class="">
                 <a href="/akun">
                     <span><i class="bi bi-person-circle"></i></span>
                     <span class="nav-text">Akun</span></a>
-            </li>
-            <li class="">
-                <a href="profile.html">
-                    <span><i class="ri-account-box-line"></i></span>
-                    <span class="nav-text">Profile</span></a>
-            </li>
-            <li class="">
-                <a href="settings-profile.html">
-                    <span><i class="ri-settings-3-line"></i></span>
-                    <span class="nav-text">Settings</span></a>
             </li>
             <li class="">
                 <a href="{{ route('logout') }}">
