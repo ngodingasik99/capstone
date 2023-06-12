@@ -11,8 +11,15 @@ class Managefinances extends Model
     use HasFactory;
     // protected $table = 'managefinances';
     protected $fillable = [
-        'modal'
+        'modal',
+        'pengeluaran',
+        'total_transaction'
     ];
+
+    public function pengeluaran()
+    {
+        return $this->hasMany(Pengeluaran::class);
+    }
 
     // static function ambildata()
     // {

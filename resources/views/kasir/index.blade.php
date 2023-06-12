@@ -96,7 +96,7 @@
                                                 <input type="number" class="form-control" id="pay" name="pay" placeholder="Pay" min="0" onkeyup="InputSub();">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="subtotal" class="form-label">Cashback</label>
+                                                <label for="subtotal" class="form-label">Changes</label>
                                                 <input type="number" class="form-control" id="cashback" name="cashback" placeholder="Cashback" min="{{ $totalPrice }}" readonly>
                                             </div>
                                         <a href="/kasir/checkout"><p class="btn btn-primary">Checkout</p></a>

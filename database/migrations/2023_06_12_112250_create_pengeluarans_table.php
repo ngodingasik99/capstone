@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('managefinances', function (Blueprint $table) {
+        Schema::create('pengeluarans', function (Blueprint $table) {
             $table->id();
-            $table->string('modal')->nullable();
-            $table->string('pengeluaran')->nullable();
-            $table->integer('total_transaction')->nullable();
-            
+            $table->foreignId('managefinance_id')->constrained('managefinances');
+            $table->string('nama');
+            $table->bigInteger('biaya');
+            $table->string('foto_nota');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('managefinances');
+        Schema::dropIfExists('pengeluarans');
     }
 };

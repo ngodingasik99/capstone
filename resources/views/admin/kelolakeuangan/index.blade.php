@@ -41,7 +41,7 @@
                         <td>Rp. {{number_format($item->modal)}}</td>
                         <td>{{number_format($hasil)}}</td>
                         <td>90.000</td>
-                        <td><img src="{{asset('enftx-html.vercel.app/images/profile/logo.jpeg')}}" width="50px" alt=""></td>
+                        <td><img src="{{asset('storage/' . $item->nota)}}" width="50px" alt=""></td>
                         <td>{{number_format($datajumlah)}}</td>
                         <td>
                             <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$item->id}}" data-bs-placement="bottom" title="edit"></button>

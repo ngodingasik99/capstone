@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Managefinances;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Models\ProductTransaction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\File;
@@ -44,14 +46,18 @@ class KasirController extends Controller
     }
     public function listtransaction()
     {
-        $data['transactions']= Transaction::all();
-        $data['carts'] = Cart::all();
-        $data['totalPrice'] = 0;
+        $carts = Cart::all();
+        $totalPrice = 0;
 
-        foreach ($data['carts'] as $cart) {   
-            $data['totalPrice'] +=  $cart->product->price * $cart->qty;
+        $today = Carbon::now()->format('Y-m-d');
+        $transactions = Transaction::whereDate('created_at', $today)->get();
+        $totaltransaction = Transaction::whereDate('created_at', $today)->sum('total');
+
+        // dd($totaltransaction);
+        foreach ($carts as $cart) {
+            $totalPrice +=  $cart->product->price * $cart->qty;
         }
-        return view('kasir.listtransaction', $data);
+        return view('kasir.listtransaction', compact('transactions', 'totaltransaction', 'carts', 'totalPrice'));
     }
     public function detailtrasaction($id)
     {
@@ -227,5 +233,25 @@ class KasirController extends Controller
         $cartItem->delete();
         Alert::success('Success', 'Delete success');
         return redirect('/kasir/transaction');
+    }
+
+    public function closing(Request $request)
+    {
+        $validasi = $request->validate([
+            'daily_omzet' => 'required|numeric',
+            'pengeluaran' => 'required|numeric|min:0',
+            'nota' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+        // dd($validasi);   
+
+        if ($request->file('nota')) {
+            $validasi['nota'] = $request->file('nota')->store('gambar');
+        }
+
+        Managefinances::create($validasi);
+        
+        Alert::success('Success', 'Data closing has been saved');
+
+        return redirect('/kasir/listtansaction');
     }
 }
