@@ -20,7 +20,7 @@ class AdminController extends Controller
         // dd($total);
         $modal = Managefinances::first();
         $oke = $total->total - $modal->modal;
-        $pendapatan = Managefinances::all();
+        $pendapatan = Managefinances::all(); 
         return view('admin.index', compact('pendapatan', 'oke', 'total'));
     }
 }
