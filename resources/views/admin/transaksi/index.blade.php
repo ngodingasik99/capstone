@@ -21,7 +21,7 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $transactions->transaction_code }}</td>
                         <td>{{ $transactions->created_at }}</td>
-                        <td>{{ $totaltransaction}}</td>
+                        <td>{{ $transactions->total}}</td>
                         <td>
                             <a href="/transaksi/detailtrasaction/{{ $transactions->id }}" class="btn-primary btn-sm bi bi-info-circle-fill" title="Detail"></a>
                             {{-- <a href="#" class="btn-primary btn-sm bi bi-printer-fill" title="Print"></a> --}}
