@@ -17,22 +17,11 @@ class ManagefinancesController extends Controller
         $data['transactions'] = Managefinances::whereDate('created_at', $data['today'])->get();
         $data['pengeluaran'] = Pengeluaran::whereDate('created_at', $data['today'])->sum('biaya');
         $data['pengeluarantbl'] = Pengeluaran::whereDate('created_at', $data['today'])->get();
-        // dd($data['pengeluarantbl']);
-        // dd($transactions,$transactionsall);
         $data['totaltransaction'] = Managefinances::whereDate('created_at', $data['today'])->sum('total_transaction');
         $data['kolom'] = Managefinances::whereDate('created_at', $data['today'])->sum('modal');
-        // dd($data['totaltransaction']);
-        // dd($data['kolom']);
         $data['hasil'] = $data['totaltransaction'] - $data['kolom'];
-        // dd($p);
-        // foreach ($data['transactionsall'] as $key ) {
-        //     $data['datajumlah'] = $key->$data['totaltransaction'] - $key->$data['kolom'];
-        //     dd($data['datajumlah']);
-        // }
         return view('admin.kelolakeuangan.index', $data);
-    } 
-
-    
+    }     
 
     public function store(Request $request)
     {

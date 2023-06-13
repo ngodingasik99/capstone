@@ -9,6 +9,7 @@ use App\Http\Controllers\ManagefinancesController;
 use App\Http\Controllers\KasirController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\TransactionController;
 
 /*
@@ -55,7 +56,7 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     Route::get('/transaksi', [TransactionController::class, 'index']);
     Route::get('/transaksi/detailtrasaction/{id}', [TransactionController::class, 'detailtrasaction']);
     //pengeluaran
-    
+    Route::get('/pengeluaran', [PengeluaranController::class, 'index']);
 
 
 });

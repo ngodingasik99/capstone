@@ -15,9 +15,9 @@
                 </div>    
             </h4>                    
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            {{-- <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i class="bi bi-plus-circle"></i>Add capital
-            </button>
+            </button> --}}
         </div>
         <div class="table-responsive">
             <table class="table">
@@ -31,19 +31,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @foreach ($transactions as $item) --}}
+                    @foreach ($semua as $number => $item)
                     <tr>
-                        <td>{{$loop->iteration}}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$number + $semua->firstItem()}}</td>
+                        <td>{{$item->created_at}}</td>
+                        <td>{{$item->nama}}</td>
+                        <td>{{$item->biaya}}</td>
+                        <td><img src="{{asset('storage/' . $item->foto_nota)}}" width="50px" height="50px" alt=""
+                            class="me-2 rounded-circle"></td>
                     </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
             <div class="my-3 d-flex justify-content-center">
-                {{-- {{$product->onEachSide(0)->links()}} --}}
+                {{$semua->onEachSide(0)->links()}}
             </div>
         </div>
     </div>
