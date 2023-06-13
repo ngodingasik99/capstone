@@ -33,12 +33,10 @@ Route::get('/home', function(){
 
 Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     Route::get('/admin',[AdminController::class, 'index'])->name('dashboard.admin');
-    
     Route::get('/kategori', [CategoryController::class, 'index']);
     Route::post('/kategori/store', [CategoryController::class, 'store']);
     Route::put('/kategori/{id}', [CategoryController::class, 'action']);
     Route::get('/kategori/{id}', [CategoryController::class, 'destroy']);
-
     Route::get('/produk', [ProductController::class, 'index']);
     Route::post('/produk/store', [ProductController::class, 'store']);
     Route::put('/produk/{id}', [ProductController::class, 'action']);
@@ -56,6 +54,8 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     //list transaksi admin
     Route::get('/transaksi', [TransactionController::class, 'index']);
     Route::get('/transaksi/detailtrasaction/{id}', [TransactionController::class, 'detailtrasaction']);
+    //pengeluaran
+    
 
 
 });
