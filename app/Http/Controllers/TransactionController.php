@@ -23,7 +23,7 @@ class TransactionController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $transaction = Transaction::whereDate('created_at', $today)->get();
         $totaltransaction = Transaction::whereDate('created_at', $today)->sum('total');
-        return view('admin.transaksi.index', compact('transaction', 'totaltransaction'));
+        return view('admin.transaksi.index', compact('transaction', 'totaltransaction', 'today'));
     }
     public function detailtrasaction($id)
     {
