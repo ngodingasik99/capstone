@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('modal')->nullable();
             $table->string('pengeluaran')->nullable();
             $table->integer('total_transaction')->nullable();
-            
             $table->timestamps();
         });
     }

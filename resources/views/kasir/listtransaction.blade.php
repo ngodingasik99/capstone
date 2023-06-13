@@ -53,7 +53,7 @@
     </div>
 </div>
 </div>
-<!-- Modal add report-->
+<!-- Modal closing-->
 <div class="modal fade" id="closing" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="closingLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -62,28 +62,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
     <div class="modal-body">
-        <form action="/kasir/closing" method="post" enctype="multipart/form-data">
+        <form action="/kasir/closing" method="post">
             @csrf
             <div class="mb-3">
-                <label for="daily_omzet" class="col-form-label">Penghasilan hari ini:</label>
-                <input type="number" class="form-control @error ('daily_omzet') is-invalid @enderror" id="daily_omzet" name="daily_omzet" value="{{ $totaltransaction }}" readonly>
-                @error('daily_omzet')
-                    {{ $message }}
-                @enderror
+                <label for="total_transaction" class="col-form-label">Penghasilan hari ini:</label>
+                <input type="text" class="form-control" id="total_transaction" name="total_transaction" value="{{ $totaltransaction }}" readonly>
             </div>
             <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Pengeluaran hari ini:</label>
-                <input type="number" class="form-control @error ('pengeluaran') is-invalid @enderror" id="pengeluaran" name="pengeluaran" id="recipient-name" min="0" required>
-                @error('pengeluaran')
-                    {{ $message }}
-                @enderror
-            </div>
-            <div class="mb-3">
-              <label for="nota" class="form-label">Nota Pengeluaran</label>
-              <input type="file" class="form-control @error ('nota') is-invalid @enderror" id="nota" name="nota" required>
-              @error('nota')
-                    {{ $message }}
-                @enderror
+                <label for="pengeluaran" class="col-form-label">Pengeluaran hari ini:</label>
+                <input type="text" class="form-control" id="pengeluaran" name="pengeluaran" id="recipient-name" value="{{ $totalpengeluaran }}" readonly>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
