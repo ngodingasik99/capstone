@@ -175,8 +175,8 @@
                         <input type="number" class="form-control" id="pay" name="pay" placeholder="Pay" min="0" onkeyup="InputSub();">
                     </div>
                     <div class="mb-3">
-                        <label for="subtotal" class="form-label">Changes</label>
-                        <input type="number" class="form-control" id="cashback" name="cashback" placeholder="Cashback" min="{{ $totalPrice }}" readonly>
+                        <label for="changes" class="form-label">Changes</label>
+                        <input type="number" class="form-control" id="changes" name="changes" placeholder="Changes" min="{{ $totalPrice }}" readonly>
                     </div>
                 <a href="/kasir/checkout"><p class="btn btn-primary">Checkout</p></a>
                 </div>
@@ -196,6 +196,18 @@
 <script src="{{asset('enftx-html.vercel.app')}}/js/plugins/chartjs-donut.js"></script>
 <script src="{{asset('enftx-html.vercel.app')}}/js/scripts.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function InputSub() {
+        var total =  parseInt(document.getElementById('total').value);
+        var pay =  parseInt(document.getElementById('pay').value);
+        var hasil = parseInt(pay) - parseInt(total);
+        if (!isNaN(hasil)) {
+        document.getElementById('changes').value = hasil;
+        console.log(hasil)
+        };
+    }
+</script>
 
 <script type="text/javascript">
     
