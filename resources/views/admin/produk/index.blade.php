@@ -40,7 +40,13 @@
                                 class="me-2 rounded-circle"></td>
                             <td>{{$item->stock}}</td>
                             <td>Rp. {{number_format($item->price)}}</td>
-                            <td>{{$item->category->category_name}}</td>
+                            <td>
+                            @if (is_null($item->category_id))
+
+                            @else
+                            {{ $item->category->category_name }}
+                            @endif
+                            </td>
                             <td>
                                 <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$item->id}}" data-bs-placement="bottom" title="edit"></button>
                                 <button class="btn-danger btn-sm bi bi-trash" onclick="hapusproduk({{ $item->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"></button>

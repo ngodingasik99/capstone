@@ -28,11 +28,17 @@ class ManagefinancesController extends Controller
         // dd($request);
         $validasi = $request->validate([
             // 'tanggal' => 'required',
-            'modal' => 'required'
+            'modal' => 'required|numeric|min:0'
         ]);
 
-        Managefinances::create($validasi);
-        Alert::success('Success', 'Manage finances has been added');
+        $today = Carbon::now()->format('Y-m-d');
+        $check = Managefinances::whereDate('created_at', $today)->exists();
+        if ($check == true) {
+            Alert::error('Failed', 'Capital today already exists');
+        } else {
+            Managefinances::create($validasi);
+            Alert::success('Success', 'Capital today has been added');
+        }
         return redirect('/kelolakeuangan');
     }
 

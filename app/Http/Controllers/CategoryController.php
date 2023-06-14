@@ -82,7 +82,7 @@ class CategoryController extends Controller
         if ($data->photo) {
             Storage::delete($data->photo);
         }
-        $data->delete();
+        category::destroy($id);
         return redirect('/kategori');
     }
 }

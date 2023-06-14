@@ -99,21 +99,26 @@ class AccountController extends Controller
             'photo' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
+        $check = User::where('email', $request->email)->exists();
         $data = User::find($id);
-        $data->name = $request->name;
-        // if ($request->email != $data->email) {
-            $data->email = $request->email;
-        //     dd($data->email);
-        // }
-        if ($request->password) {
-            $data->password = Hash::make($request->password);
-        }
         if ($request->file('photo')) {
             Storage::delete($data->photo);
             $data->photo = Storage::putFile('gambar', $request->file('photo'));
         }
-        Alert::success('Success', 'Account has been edited');
+
+        $data->name = $request->name;
+
+        if ($request->password) {
+            $data->password = Hash::make($request->password);
+        }
+
+        if ($check == false) {
+            $data->email = $request->email;
+        }
+        
         $data->save();
+        Alert::success('Success', 'Account has been edited');
+         
         return redirect('/akun');
     }
 

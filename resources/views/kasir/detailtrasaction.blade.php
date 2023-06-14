@@ -39,8 +39,8 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $detail->product_name }}</td>
                         <td>{{ $detail->qty }}</td>
-                        <td>{{ number_format($detail->price) }}</td>
-                        <td>{{ number_format($detail->subtotal) }}</td>
+                        <td>Rp. {{ number_format($detail->price) }}</td>
+                        <td>Rp. {{ number_format($detail->subtotal) }}</td>
                         <td>{{ $detail->created_at }}</td>
                     </tr>
                     @endforeach

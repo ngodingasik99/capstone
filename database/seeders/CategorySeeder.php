@@ -18,7 +18,6 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             'category_name' => 'Paketan',
-            'description' => 'Pesanan dalam bentuk paketan',
             'photo' => Str::random(20),
             'created_at' => now(),
             'updated_at' => now(),            
@@ -26,7 +25,6 @@ class CategorySeeder extends Seeder
 
         DB::table('categories')->insert([
             'category_name' => 'Satuan',
-            'description' => 'Pesanan dalam bentuk satuan',
             'photo' => Str::random(20),
             'created_at' => now(),
             'updated_at' => now(),            
