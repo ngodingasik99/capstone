@@ -4,6 +4,9 @@
 @include('sweetalert::alert')
 <div class="content-body">
     <div class="container">
+        <center class="mb-2">
+            <h2>List Transaction</h2>
+        </center>
         <div class="card-header flex-row">
             <h4 class="card-title">
                 <div class="input-group">

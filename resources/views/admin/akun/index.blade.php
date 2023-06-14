@@ -4,6 +4,9 @@
 @include('sweetalert::alert')
     <div class="content-body">
         <div class="container">
+            <center class="mb-2">
+                <h2>Management Account</h2>
+            </center>
             <div class="card-header flex-row">
                 <h4 class="card-title">
                     <div class="input-group">
@@ -33,8 +36,15 @@
                         @foreach ($users as $user => $item)
                         <tr>
                             <td>{{$user + $users->firstItem()}}</td>
-                            <td><img src="{{asset('storage/' . $item->photo)}}" width="50px" height="50px" alt=""
-                                class="me-2 rounded-circle"></td>
+                            <td>
+                                @if (Storage::exists($item->photo))
+                                    <img src="{{asset('storage/' . $item->photo)}}" alt="" width="50px" height="50px"
+                                    class="me-2 rounded-circle">    
+                                @else
+                                    <img src="{{asset('images/default-profil.jpg')}}" alt="" width="50px" height="50px"
+                                    class="me-2 rounded-circle">
+                                @endif
+                            </td>
                             <td>{{$item->name}}</td>
                             <td>{{$item->email}}</td>
                             <td>{{$item->role}}</td>

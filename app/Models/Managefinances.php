@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 class Managefinances extends Model
 {
     use HasFactory;
-    // protected $table = 'managefinances';
     protected $fillable = [
         'modal',
         'pengeluaran',
@@ -21,8 +20,4 @@ class Managefinances extends Model
         return $this->hasMany(Pengeluaran::class);
     }
 
-    // static function ambildata()
-    // {
-    //     return DB::select('SELECT * FROM managefinances');
-    // }
 }

@@ -19,12 +19,6 @@ class Transaction extends Model
         'total',
     ];
 
-    // static function ngesum()
-    // {
-    //     return DB::select("SELECT SUM(total) as total FROM transactions");
-
-    // }
-
     public function product()
     {
         return $this->belongsToMany(Product::class)->using(ProductTransaction::class)->withPivot('product_name', 'price', 'subtotal');

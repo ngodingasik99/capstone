@@ -3,14 +3,13 @@
 @section('content')
 <div class="content-body">
     <div class="container">
+      <center class="mb-2">
+          <h2>Kelola Keuangan</h2>
+      </center>
         <div class="card-header flex-row">
             <h4 class="card-title">
                 <div class="input-group">
                     <div class="form-outline">
-                        {{-- <div class=""></div> --}}
-                        {{-- <form action="/kelolakeuangan" method="GET">
-                            <input type="search" id="form1" name="search" class="form-control" placeholder="Searching">
-                        </form> --}}
                     </div>
                 </div>    
             </h4>                    
@@ -39,7 +38,7 @@
                         <td>{{$today}}</td>
                         <td>Rp. {{number_format($kolom)}}</td>
                         <td>Rp. {{number_format($totaltransaction)}}</td>
-                        <td>Rp. {{$pengeluaran}}</td>
+                        <td>Rp. {{number_format($pengeluaran)}}</td>
                         <td>Rp. {{number_format($hasil)}}</td>
                         <td>
                             <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$item->id}}" data-bs-placement="bottom" title="Edit"></button>
@@ -78,9 +77,9 @@
                 <tbody>
                 @foreach ($pengeluarantbl as $pengeluaran)
                   <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">{{$loop->iteration}}</th>
                     <td>{{$pengeluaran->nama}}</td>
-                    <td>{{$pengeluaran->biaya}}</td>
+                    <td>{{number_format($pengeluaran->biaya)}}</td>
                     <td><img src="{{asset('storage/' . $pengeluaran->foto_nota)}}" width="50px" height="50px" alt=""
                         class="me-2 rounded-circle"></td>
                   </tr>       

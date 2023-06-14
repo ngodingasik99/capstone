@@ -5,6 +5,9 @@
 <div id="main-wrapper">
 <center>
     <div class="container">
+        <center class="mb-4">
+            <h2>Dashboard Admin</h2>
+        </center>
     <div class="row">
         <div class="col-xl-3 col-sm-6">
             <div class="stat-widget d-flex align-items-center">
@@ -24,7 +27,6 @@
                 </div>
             </div>
         </div>
-        {{-- @foreach ($pendapatan as $item)             --}}
         <div class="col-xl-3 col-sm-6">
             <div class="stat-widget d-flex align-items-center">
                 <div class="widget-icon me-3 bg-warning"><span><i class="ri-file-paper-line"></i></span></div>
@@ -34,7 +36,6 @@
                 </div>
             </div>
         </div>
-        {{-- @endforeach --}}
         <div class="col-xl-3 col-sm-6">
             <div class="stat-widget d-flex align-items-center">
                 <div class="widget-icon me-3 bg-danger"><span><i class="ri-file-paper-2-line"></i></span></div>
@@ -45,22 +46,7 @@
             </div>
         </div>
     </div>
-    {{-- <div class="col-xxl-6 col-xl-8 col-lg-6">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    {!! $monthlyTransactionChart->container() !!}
-                </div>
-            </div>
-        </div>
-    </div>
-    </div> --}}
-
-{{-- <script src="{{ $monthlyTransactionChart->cdn() }}"></script> --}}
-
-{{-- {{ $monthlyTransactionChart->script() }} --}}
-
+    
 </div>
 </center>
 </div>

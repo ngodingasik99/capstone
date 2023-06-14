@@ -25,9 +25,7 @@ class ManagefinancesController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $validasi = $request->validate([
-            // 'tanggal' => 'required',
             'modal' => 'required|numeric|min:0'
         ]);
 
@@ -45,12 +43,10 @@ class ManagefinancesController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            // 'tanggal' => 'required',
             'modal' => 'required'
         ]);
 
         $data = Managefinances::find($id);
-        // $data->tanggal = $request->tanggal;
         $data->modal = $request->modal;
         $data->save();
         Alert::success('Success', 'Manage finances has been edited');

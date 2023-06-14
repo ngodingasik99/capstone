@@ -33,15 +33,6 @@ class Product extends Model
         return $this->hasMany(Cart::class);
     }
 
-    //test chart
-    protected function chart()
-    {
-        $month = date('m');
-        // return DB::delete("DELETE FROM carts WHERE id='$data'");
-        return DB::select("SELECT COUNT(created_at) AS total, created_at FROM `products` GROUP BY `created_at` HAVING MONTH(created_at) = $month");
-    }
-    //test chart
-
     public function transactions()
     {
         return $this->belongsToMany(Transaction::class)->using(ProductTransaction::class)->withPivot('product_name', 'price', 'subtotal');

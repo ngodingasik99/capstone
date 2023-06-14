@@ -4,6 +4,9 @@
 @include('sweetalert::alert')
     <div class="content-body">
         <div class="container">
+            <center class="mb-2">
+                <h2>Management Category</h2>
+            </center>
             <div class="card-header flex-row">
                 <h4 class="card-title">
                     <div class="input-group">
@@ -32,8 +35,14 @@
                         <tr>
                             <td>{{$number + $category->firstItem()}}</td>
                             <td>{{$item->category_name}}</td>
-                            <td><img src="{{asset('storage/' . $item->photo)}}" width="50px" height="50px" alt=""
-                                class="me-2 rounded-circle"></td>
+                            <td>
+                                @if (Storage::exists($item->photo))
+                                    <img src="{{asset('storage/' . $item->photo)}}" alt="" width="50px" height="50px"
+                                    class="me-2 rounded-circle">    
+                                @else
+                                    <img src="{{asset('images/default-food.png')}}" alt="" width="50px" height="50px"
+                                    class="me-2 rounded-circle">
+                                @endif
                             <td>
                                 <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$item->id}}" data-bs-placement="bottom" title="edit"></button>
                                 <button class="btn-danger btn-sm bi bi-trash" onclick="hapuskategori({{ $item->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"></button>

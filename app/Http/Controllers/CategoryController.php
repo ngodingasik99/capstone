@@ -10,11 +10,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         if ($request->has('search')) {
@@ -25,13 +20,6 @@ class CategoryController extends Controller
         return view('admin.kategori.index', $data);
     }
 
-
-        /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validasi = $request->validate([
@@ -48,14 +36,11 @@ class CategoryController extends Controller
         return redirect('/kategori');
     }
 
-
-
     public function action(Request $request, $id)
     {
         $request->validate([
             'category_name' => 'required|max:50',
             'photo' => [File::types(['jpg', 'jpeg', 'png', 'gif'])->max(2 * 1024)],
-
         ]);
 
         $data = category::find($id);
@@ -69,13 +54,6 @@ class CategoryController extends Controller
         return redirect('/kategori');
     }
 
-    
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $data = category::find($id);

@@ -4,7 +4,9 @@
 @include('sweetalert::alert')
 <div class="content-body">
     <div class="container">
-        <h3>Pengeluaran Tanggal {{ $today }}</h3>
+        <center class="mb-2">
+            <h2>Pengeluaran</h2>
+        </center>
         <div class="card-header flex-row">
             <h4 class="card-title">
                 <div class="input-group">
@@ -15,6 +17,7 @@
                     </div>
                 </div>
             </h4>
+            <h5>Pengeluaran Tanggal {{ $today }}</h5>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 <i class="bi bi-plus-circle"></i>  Tambah Pengeluaran
@@ -38,7 +41,13 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $pengeluaran->nama }}</td>
                         <td>Rp. {{ number_format($pengeluaran->biaya) }}</td>
-                        <td><img src="{{asset('storage/' . $pengeluaran->foto_nota)}}" alt="" width="50px" height="50px" class="me-2 rounded-circle"></td>
+                        <td>
+                            @if (Storage::exists($pengeluaran->foto_nota))
+                                <img src="{{asset('storage/' . $pengeluaran->foto_nota)}}" alt="nota" width="50px" height="50px" class="me-2 rounded-circle">    
+                            @else
+                                <img src="{{asset('images/default-nota.png')}}" alt="nota" width="50px" height="50px" class="me-2 rounded-circle">
+                            @endif
+                        </td>
                         <td>{{ $pengeluaran->created_at }}</td>
                         <td>
                             <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$pengeluaran->id}}" data-bs-placement="bottom" title="edit" title="Edit"></button>

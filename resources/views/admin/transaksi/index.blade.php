@@ -4,6 +4,9 @@
 @include('sweetalert::alert')
 <div class="content-body">
     <div class="container">
+        <center class="mb-2">
+            <h2>List Transaction</h2>
+        </center>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -21,10 +24,9 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $transactions->transaction_code }}</td>
                         <td>{{ $today }}</td>
-                        <td>{{ $transactions->total}}</td>
+                        <td>Rp. {{ number_format($transactions->total)}}</td>
                         <td>
                             <a href="/transaksi/detailtrasaction/{{ $transactions->id }}" class="btn-primary btn-sm bi bi-info-circle-fill" title="Detail"></a>
-                            {{-- <a href="#" class="btn-primary btn-sm bi bi-printer-fill" title="Print"></a> --}}
                         </td>
                     </tr>
                     @endforeach

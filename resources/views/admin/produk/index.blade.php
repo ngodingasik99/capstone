@@ -3,6 +3,9 @@
 @section('content')
     <div class="content-body">
         <div class="container">
+            <center class="mb-2">
+                <h2>Management Product</h2>
+            </center>
             <div class="card-header flex-row">
                 <h4 class="card-title">
                     <div class="input-group">
@@ -36,8 +39,15 @@
                         <tr>
                             <td class="">{{$number + $product->firstItem()}}</td>
                             <td>{{$item->product_name}}</td>
-                            <td><img src="{{asset('storage/' . $item->photo)}}" alt="" width="50px" height="50px"
-                                class="me-2 rounded-circle"></td>
+                            <td>
+                                @if (Storage::exists($item->photo))
+                                    <img src="{{asset('storage/' . $item->photo)}}" alt="product" width="50px" height="50px"
+                                    class="me-2 rounded-circle">    
+                                @else
+                                    <img src="{{asset('images/default-food.png')}}" alt="product" width="50px" height="50px"
+                                    class="me-2 rounded-circle">
+                                @endif
+                            </td>
                             <td>{{$item->stock}}</td>
                             <td>Rp. {{number_format($item->price)}}</td>
                             <td>

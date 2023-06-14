@@ -12,11 +12,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
         if ($request->has('search')) {
@@ -29,17 +24,8 @@ class ProductController extends Controller
         return view('admin.produk.index', $data);
     }
 
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        // dd($request);
         $validasi = $request->validate([
             'product_name' => 'required|max:50',
             'price' => 'required|numeric|min:0',
@@ -55,7 +41,6 @@ class ProductController extends Controller
         product::create($validasi);
         Alert::success('Success', 'Product has been added');
         return redirect('/produk');
-        // ->with('success', 'Product created successfully.');
     }
 
     public function action(Request $request, $id)
@@ -82,13 +67,6 @@ class ProductController extends Controller
         return redirect('/produk');
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $data = product::find($id);

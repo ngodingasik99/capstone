@@ -7,7 +7,6 @@ use App\Http\Controllers\KasirController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\AkunkasirController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\ManagefinancesController;
@@ -34,11 +33,12 @@ Route::get('/home', function(){
 });
 
 Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
-    Route::get('/admin',[AdminController::class, 'index'])->name('dashboard.admin');
+    Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/kategori', [CategoryController::class, 'index']);
     Route::post('/kategori/store', [CategoryController::class, 'store']);
     Route::put('/kategori/{id}', [CategoryController::class, 'action']);
     Route::get('/kategori/{id}', [CategoryController::class, 'destroy']);
+    //kelola produk
     Route::get('/produk', [ProductController::class, 'index']);
     Route::post('/produk/store', [ProductController::class, 'store']);
     Route::put('/produk/{id}', [ProductController::class, 'action']);
@@ -58,27 +58,25 @@ Route::group(['middleware' => ['userAkses:admin', 'auth']], function () {
     Route::get('/transaksi/detailtrasaction/{id}', [TransactionController::class, 'detailtrasaction']);
     //pengeluaran
     Route::get('/pengeluaran', [PengeluaranAdminController::class, 'index']);
-
-
 });
 
 Route::group(['middleware' => ['userAkses:kasir', 'auth']], function () {
-    Route::get('/kasir',[KasirController::class, 'index'])->name('dashboard.kasir');
+    //transaksi
     Route::get('/kasir/transaction',[KasirController::class, 'transaction'])->name('transaction.kasir');
     Route::get('/kasir/listtansaction',[KasirController::class, 'listtransaction'])->name('listtransaction.kasir');
     Route::get('/kasir/detailtrasaction/{id}',[KasirController::class, 'detailtrasaction'])->name('detailtrasaction.kasir');
+    //closing
     Route::post('/kasir/closing', [KasirController::class, 'closing']);
+    //pengeluaran
     Route::get('/kasir/pengeluaran',[PengeluaranController::class, 'index']);
     Route::post('/kasir/pengeluaran/store', [PengeluaranController::class, 'store']);
     Route::get('/kasir/pengeluaran/{id}', [PengeluaranController::class, 'destroy']);
     Route::put('/kasir/pengeluaran/{id}', [PengeluaranController::class, 'update']);
-    
+    //add to cart
+    Route::post('/add-to-cart/{id}', [KasirController::class, 'addtocart']);
+    Route::get('/kasir/checkout', [KasirController::class, 'checkout'])->name('checkout.kasir');
+    Route::get('/kasir/delete-cart/{id}', [KasirController::class, 'deletecart']);
 });
 
 Route::get('/logout',[SesiController::class,'logout'])->name('logout');
 
-Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('dashboard');
-
-Route::post('/add-to-cart/{id}', [KasirController::class, 'addtocart']);
-Route::get('/kasir/checkout', [KasirController::class, 'checkout'])->name('checkout.kasir');
-Route::get('/kasir/delete-cart/{id}', [KasirController::class, 'deletecart']);

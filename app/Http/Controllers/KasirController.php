@@ -19,11 +19,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class KasirController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $data['carts'] = Cart::all();
@@ -55,7 +50,6 @@ class KasirController extends Controller
         $totaltransaction = Transaction::whereDate('created_at', $today)->sum('total');
         $totalpengeluaran = Pengeluaran::whereDate('created_at', $today)->sum('biaya');
 
-        // dd($totaltransaction);
         foreach ($carts as $cart) {
             $totalPrice +=  $cart->product->price * $cart->qty;
         }
@@ -78,72 +72,6 @@ class KasirController extends Controller
         }
 
         return view('kasir.detailtrasaction', $data);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function addtocart(Request $request, $id)

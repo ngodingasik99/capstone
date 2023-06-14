@@ -24,10 +24,8 @@ class PengeluaranController extends Controller
         }
 
         $data['today'] = Carbon::now()->format('Y-m-d');
-        // dd($data['today']);
         $data['pengeluarans'] = Pengeluaran::whereDate('created_at', $data['today'])->get();
-        // dd($data['pengeluarans']);
-
+      
         return view('kasir.pengeluaran', $data);
     }
 
@@ -46,7 +44,6 @@ class PengeluaranController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $check = Managefinances::whereDate('created_at', $today)->exists();
 
-        // dd($check);
         if ($check == true) {
             $keuangans = Managefinances::whereDate('created_at', $today)->get();
             foreach ($keuangans as $keuangan) {
@@ -65,7 +62,6 @@ class PengeluaranController extends Controller
         } else {
             Alert::error('Failed', 'Modal hari ini belum dimasukkan');
         }
-        // dd($keuangans);
         
         return redirect('/kasir/pengeluaran');
     }
