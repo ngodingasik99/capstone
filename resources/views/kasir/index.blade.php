@@ -143,13 +143,19 @@
             <li>
                 <a href="/kasir/transaction">
                     <span><i class="ri-layout-grid-fill"></i></span>
-                    <span class="nav-text">Transaktion</span>
+                    <span class="nav-text">Transaction</span>
                 </a>
             </li>
             <li class="">
                 <a href="/kasir/listtansaction">
                     <span><i class="ri-briefcase-line"></i></span>
                     <span class="nav-text">List Transaction</span></a>
+            </li>
+            <li>
+                <a href="/kasir/pengeluaran">
+                    <span><i class="bi bi-wallet2"></i></span>
+                    <span class="nav-text">Pengeluaran</span>
+                </a>
             </li>
             <li class="logout"><a href="{{ route('logout') }}">
                     <span><i class="ri-logout-circle-line"></i></span>
@@ -170,6 +176,7 @@
 <script src="{{asset('enftx-html.vercel.app')}}/js/plugins/chartjs-line-init.js"></script>
 <script src="{{asset('enftx-html.vercel.app')}}/js/plugins/chartjs-donut.js"></script>
 <script src="{{asset('enftx-html.vercel.app')}}/js/scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     function InputSub() {
@@ -216,6 +223,32 @@
 
 <script>
     $('.increment-btn').click()
+</script>
+
+<script type="text/javascript">
+    
+    function hapuspengeluaran(id){
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Confirm Delete!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+                window.location.href = "/kasir/pengeluaran/" + id
+            }
+            })
+
+
+    }
 </script>
 
 </body>

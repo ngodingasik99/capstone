@@ -1,16 +1,19 @@
 <?php
 
-use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AkunkasirController;
-use App\Http\Controllers\ManagefinancesController;
 use App\Http\Controllers\KasirController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\AkunkasirController;
+>>>>>>> kiki
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ManagefinancesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +69,12 @@ Route::group(['middleware' => ['userAkses:kasir', 'auth']], function () {
     Route::get('/kasir/transaction',[KasirController::class, 'transaction'])->name('transaction.kasir');
     Route::get('/kasir/listtansaction',[KasirController::class, 'listtransaction'])->name('listtransaction.kasir');
     Route::get('/kasir/detailtrasaction/{id}',[KasirController::class, 'detailtrasaction'])->name('detailtrasaction.kasir');
-    Route::post('/kasir/closing', [KasirController::class, 'closing']); 
+    Route::post('/kasir/closing', [KasirController::class, 'closing']);
+    Route::get('/kasir/pengeluaran',[PengeluaranController::class, 'index']);
+    Route::post('/kasir/pengeluaran/store', [PengeluaranController::class, 'store']);
+    Route::get('/kasir/pengeluaran/{id}', [PengeluaranController::class, 'destroy']);
+    Route::put('/kasir/pengeluaran/{id}', [PengeluaranController::class, 'update']);
+    
 });
 
 Route::get('/logout',[SesiController::class,'logout'])->name('logout');

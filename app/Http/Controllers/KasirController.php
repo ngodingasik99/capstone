@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Managefinances;
+use App\Models\Pengeluaran;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -52,12 +53,13 @@ class KasirController extends Controller
         $today = Carbon::now()->format('Y-m-d');
         $transactions = Transaction::whereDate('created_at', $today)->get();
         $totaltransaction = Transaction::whereDate('created_at', $today)->sum('total');
+        $totalpengeluaran = Pengeluaran::whereDate('created_at', $today)->sum('biaya');
 
         // dd($totaltransaction);
         foreach ($carts as $cart) {
             $totalPrice +=  $cart->product->price * $cart->qty;
         }
-        return view('kasir.listtransaction', compact('transactions', 'totaltransaction', 'carts', 'totalPrice'));
+        return view('kasir.listtransaction', compact('transactions', 'totaltransaction', 'totalpengeluaran', 'carts', 'totalPrice'));
     }
     public function detailtrasaction($id)
     {
@@ -149,31 +151,42 @@ class KasirController extends Controller
         $data['kasir'] = Product::all();
         $data['carts'] = Cart::all();
         $data['totalPrice'] = 0;
+        $stockReady = true;
 
+        // dd($request->qty);
         foreach ($data['carts'] as $cart) {   
             $data['totalPrice'] +=  $cart->product->price * $cart->qty;
+        }
+
+        $products = Product::find($id);
+        if ($products->stock < $request->qty ) {
+            $stockReady = false;
         }
 
         $request->validate([
             'qty' => 'required|numeric|min:1',
         ]);
 
-        $carts = DB::table('carts')
-                ->where('product_id', '=', $id)
-                ->first();
+        if ($stockReady == true) {
+            $carts = DB::table('carts')
+                    ->where('product_id', '=', $id)
+                    ->first();
 
-        if ( is_null($carts)) {
-            Cart::create([
-                'product_id' => $id,
-                'qty' => $request->qty
-            ]);
+            if ( is_null($carts)) {
+                Cart::create([
+                    'product_id' => $id,
+                    'qty' => $request->qty
+                ]);
+            } else {
+                Cart::where('product_id', $id)->update([
+                    'qty' => $request->qty
+                ]);
+            }
+            Alert::success('Success', 'Product has been added to cart');
         } else {
-            Cart::where('product_id', $id)->update([
-                'qty' => $request->qty
-            ]);
+            Alert::error('failed', 'Not enough stock');
         }
 
-        Alert::success('Success', 'Product has been added to cart');
         return redirect('/kasir/transaction');
     }
 
@@ -238,19 +251,32 @@ class KasirController extends Controller
     public function closing(Request $request)
     {
         $validasi = $request->validate([
-            'daily_omzet' => 'required|numeric',
-            'pengeluaran' => 'required|numeric|min:0',
-            'nota' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'total_transaction' => 'required|numeric',
+            'pengeluaran' => 'required|numeric|min:0'
         ]);
         // dd($validasi);   
 
-        if ($request->file('nota')) {
-            $validasi['nota'] = $request->file('nota')->store('gambar');
-        }
+        $today = Carbon::now()->format('Y-m-d');
+        $check = Managefinances::whereDate('created_at', $today)->exists();
 
-        Managefinances::create($validasi);
+        // dd($check);
         
-        Alert::success('Success', 'Data closing has been saved');
+        if ($check == true) {
+            $keuangans = Managefinances::whereDate('created_at', $today)->get();
+
+            foreach ($keuangans as $keuangan) {
+                $keuanganId = $keuangan->id;
+            }
+
+            $data = Managefinances::find($keuanganId);
+            $data->pengeluaran = $validasi['pengeluaran'];
+            $data->total_transaction = $validasi['total_transaction'];
+            $data->save();
+            
+            Alert::success('Success', 'Data closing has been saved');
+        } else {
+            Alert::error('Failed', 'Modal hari ini belum dimasukkan');
+        }
 
         return redirect('/kasir/listtansaction');
     }
