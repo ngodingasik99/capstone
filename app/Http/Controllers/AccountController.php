@@ -129,7 +129,7 @@ class AccountController extends Controller
         if ($data->photo) {
             Storage::delete($data->photo);
         }
-        User::destroy($id);
+        $data->delete();
         return redirect('/akun');
     }
 }

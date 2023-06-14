@@ -81,7 +81,7 @@
                     <th scope="row">1</th>
                     <td>{{$pengeluaran->nama}}</td>
                     <td>{{$pengeluaran->biaya}}</td>
-                    <td><img src="{{asset('storage/' . $pengeluaran->photo)}}" width="50px" height="50px" alt=""
+                    <td><img src="{{asset('storage/' . $pengeluaran->foto_nota)}}" width="50px" height="50px" alt=""
                         class="me-2 rounded-circle"></td>
                   </tr>       
                 @endforeach

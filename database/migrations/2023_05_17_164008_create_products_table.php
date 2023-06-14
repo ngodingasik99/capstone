@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained('categories');
             $table->string('product_name');
-            $table->text('description');
             $table->bigInteger('price');
             $table->integer('stock');
             $table->string('photo');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

@@ -97,7 +97,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="subtotal" class="form-label">Changes</label>
-                                                <input type="number" class="form-control" id="cashback" name="cashback" placeholder="Cashback" min="{{ $totalPrice }}" readonly>
+                                                <input type="number" class="form-control" id="cashback" name="cashback" placeholder="Changes" min="{{ $totalPrice }}" readonly>
                                             </div>
                                         <a href="/kasir/checkout"><p class="btn btn-primary">Checkout</p></a>
                                         </div>

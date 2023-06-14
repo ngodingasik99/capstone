@@ -36,7 +36,6 @@ class CategoryController extends Controller
     {
         $validasi = $request->validate([
             'category_name' => 'required',
-            'description' => 'required',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
@@ -55,14 +54,12 @@ class CategoryController extends Controller
     {
         $request->validate([
             'category_name' => 'required|max:50',
-            'description' => 'required|max:100',
             'photo' => [File::types(['jpg', 'jpeg', 'png', 'gif'])->max(2 * 1024)],
 
         ]);
 
         $data = category::find($id);
         $data->category_name = $request->category_name;
-        $data->description =$request->description;
         if ($request->file('photo')) {
             Storage::delete($data->photo);
             $data->photo = Storage::putFile('gambar', $request->file('photo'));
@@ -85,7 +82,7 @@ class CategoryController extends Controller
         if ($data->photo) {
             Storage::delete($data->photo);
         }
-        category::destroy($id);
+        $data->delete();
         return redirect('/kategori');
     }
 }

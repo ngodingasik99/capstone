@@ -44,7 +44,6 @@ class ProductController extends Controller
             'product_name' => 'required|max:50',
             'price' => 'required|numeric|min:0',
             'category_id' => 'required',
-            'description' => 'required|max:100',
             'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'stock' => 'required|numeric|min:1'
         ]);
@@ -65,7 +64,6 @@ class ProductController extends Controller
             'product_name' => 'required|max:50',
             'price' => 'required|numeric|min:0',
             'category_id' => 'required',
-            'description' => 'required|max:100',
             'photo' => [File::types(['jpg', 'jpeg', 'png', 'gif'])->max(2 * 1024)],
             'stock' => 'required|numeric|min:1',
         ]);
@@ -74,7 +72,6 @@ class ProductController extends Controller
         $data->product_name = $request->product_name;
         $data->price = $request->price;
         $data->category_id = $request->category_id;
-        $data->description = $request->description;
         $data->stock = $request->stock;
         if ($request->file('photo')) {
             Storage::delete($data->photo);
@@ -98,7 +95,7 @@ class ProductController extends Controller
         if ($data->photo) {
             Storage::delete($data->photo);
         }
-        product::destroy($id);
+        $data->delete();
         return redirect('/produk');
     }
 }

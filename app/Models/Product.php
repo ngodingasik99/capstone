@@ -6,12 +6,14 @@ use App\Models\Transaction;
 use App\Models\ProductTransaction;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
     use HasFactory;
-
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
     protected $fillable = [
         'product_name',
         'price',

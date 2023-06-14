@@ -24,7 +24,6 @@
                             <th>#</th>
                             <th>Category name</th>
                             <th>Image</th>
-                            <th>Description</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -35,7 +34,6 @@
                             <td>{{$item->category_name}}</td>
                             <td><img src="{{asset('storage/' . $item->photo)}}" width="50px" height="50px" alt=""
                                 class="me-2 rounded-circle"></td>
-                            <td>{{$item->description}}</td>
                             <td>
                                 <button class="btn-primary btn-sm bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#update{{$item->id}}" data-bs-placement="bottom" title="edit"></button>
                                 <button class="btn-danger btn-sm bi bi-trash" onclick="hapuskategori({{ $item->id }})" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Delete"></button>
@@ -80,13 +78,6 @@
                     {{ $message }}
                 @enderror
                 </div>
-                <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control @error ('description') is-invalid @enderror" id="description" name="description" value="{{$item->description}}" required>
-                @error('description')
-                    {{ $message }}
-                @enderror
-                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>
@@ -119,14 +110,6 @@
                   <label for="photo" class="form-label">Image</label>
                   <input type="file" class="form-control @error ('photo') is-invalid @enderror" id="photo" name="photo" required>
                   @error('photo')
-                    {{ $message }}
-                  @enderror
-                </div>
-                
-                <div class="mb-3">
-                  <label for="description" class="form-label">Description</label>
-                  <input type="text" class="form-control @error ('description') is-invalid @enderror" id="description" name="description" required>
-                  @error('description')
                     {{ $message }}
                   @enderror
                 </div>

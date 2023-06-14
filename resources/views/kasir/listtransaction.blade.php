@@ -40,7 +40,6 @@
                         <td>Rp. {{ number_format($transaction->total) }}</td>
                         <td>
                             <a href="/kasir/detailtrasaction/{{ $transaction->id }}" class="btn-primary btn-sm bi bi-info-circle-fill" title="Detail"></a>
-                            <a href="#" class="btn-primary btn-sm bi bi-printer-fill" title="Print"></a>
                         </td>
                     </tr>
                     @endforeach

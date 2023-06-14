@@ -25,7 +25,6 @@
                             <th>#</th>
                             <th>Product name</th>
                             <th>Image</th>
-                            <th>Description</th>
                             <th>Stock</th>
                             <th>Price</th>
                             <th>Category name</th>
@@ -39,7 +38,6 @@
                             <td>{{$item->product_name}}</td>
                             <td><img src="{{asset('storage/' . $item->photo)}}" alt="" width="50px" height="50px"
                                 class="me-2 rounded-circle"></td>
-                            <td>{{$item->description}}</td>
                             <td>{{$item->stock}}</td>
                             <td>Rp. {{number_format($item->price)}}</td>
                             <td>{{$item->category->category_name}}</td>
@@ -84,13 +82,6 @@
                 <input type="file" class="form-control @error ('photo') is-invalid @enderror" id="photo" name="photo" value="{{$item->photo}}"><br>
                 <img src="{{asset('storage/' . $item->photo)}}" width="90px" alt="">
                 @error('photo')
-                    {{ $message }}
-                @enderror    
-                </div>
-                <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <input type="text" class="form-control @error ('description') is-invalid @enderror" id="description" name="description" value="{{$item->description}}" required>
-                @error('description')
                     {{ $message }}
                 @enderror    
                 </div>
@@ -152,13 +143,6 @@
                     <label for="photo" class="form-label">Image</label>
                     <input type="file" class="form-control @error ('photo') is-invalid @enderror" id="photo" name="photo" required>
                     @error('photo')
-                        {{ $message }}
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <input type="text" class="form-control @error ('description') is-invalid @enderror" id="description" name="description" required>
-                    @error('description')
                         {{ $message }}
                     @enderror
                 </div>
