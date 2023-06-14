@@ -107,18 +107,18 @@
                         </div>
                         <div class="dropdown profile_log dropdown">
                             <div data-bs-toggle="dropdown" aria-haspopup="true" class="" aria-expanded="false">
-                                <div class="user icon-menu active"><span><img src="{{asset('enftx-html.vercel.app/images/avatar/9.jpg')}}" alt=""></span>
+                                <div class="user icon-menu active"><span><img src="{{asset('storage/' . auth()->user()->photo)}}" alt=""></span>
                                 </div>
                             </div>
                             <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
                                 <div class="user-email">
                                     <div class="user">
                                         <span class="thumb">
-                                            <img src="{{asset('enftx-html.vercel.app/images/profile/3.png')}}" alt="">
+                                            <img src="{{asset('storage/' . auth()->user()->photo)}}" alt="">
                                         </span>
                                         <div class="user-info">
-                                            <h5>Jannatul Maowa</h5>
-                                            <span>imsaifun@gmail.com</span>
+                                            <h5>{{auth()->user()->name}}</h5>
+                                            <span>{{auth()->user()->email}}</span>
                                         </div>
                                     </div>
                                 </div>
